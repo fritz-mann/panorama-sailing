@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: fritz-mann/panorama-sailing
+  branch: main
+  base_url: https://panorama-cms-auth.fritzmann1.workers.dev
+  auth_endpoint: auth
+
+media_folder: "images/logbook"
+public_folder: "/images/logbook"
+
+collections:
+  - name: "logbook"
+    label: "Logbook"
+    folder: "logbook"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
