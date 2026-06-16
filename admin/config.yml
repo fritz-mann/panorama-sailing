@@ -19,4 +19,6 @@ collections:
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Featured Image", name: "image", widget: "image", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "YouTube URL", name: "youtube", widget: "string", required: false, hint: "Paste full YouTube URL e.g. https://youtube.com/watch?v=xxxxxx" }
+      - { label: "Instagram URL", name: "instagram", widget: "string", required: false, hint: "Paste full Instagram Reel or post URL" }
       - { label: "Published", name: "published", widget: "boolean", default: true }
