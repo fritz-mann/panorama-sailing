@@ -1,6 +1,6 @@
 ---
 title: Bubbly or very dirty Martini…?
-date: 2026-06-15T16:53:00.000-04:00
+date: 2026-06-13T17:53:00.000-04:00
 image: /images/logbook/img_6090.jpeg
 published: true
 ---
