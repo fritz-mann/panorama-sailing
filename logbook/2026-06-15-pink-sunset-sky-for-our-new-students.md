@@ -1,5 +1,5 @@
 ---
-title: "Pink sunset sky for our new students "
+title: "Pink skies for our new students "
 date: 2026-06-15T18:33:00.000-04:00
 image: /images/logbook/img_6091.jpeg
 published: true
