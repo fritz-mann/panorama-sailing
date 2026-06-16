@@ -296,16 +296,33 @@
   .exp-deco { position:absolute; top:1.2rem; right:1.2rem; font-size:2.5rem; opacity:0.07; color:var(--foam); }
 
   /* ── LOGBOOK ── */
+  #logbook { background: var(--navy); }
   .logbook-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem; margin-top: 3.5rem;
+  }
+  @media (max-width: 1024px) {
+    .logbook-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .logbook-grid { grid-template-columns: 1fr; }
   }
   .logbook-card {
     background: var(--deep); border: 1px solid rgba(45,143,196,0.15);
     overflow: hidden; transition: border-color 0.3s, transform 0.3s;
     display: flex; flex-direction: column;
+    text-decoration: none; color: inherit; cursor: pointer;
   }
   .logbook-card:hover { border-color: rgba(14,158,158,0.4); transform: translateY(-4px); }
+  .logbook-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 1.2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); transition: gap 0.2s;
+  }
+  .logbook-card:hover .logbook-link { gap: 0.8rem; }
   .logbook-img {
     width: 100%; aspect-ratio: 16/9; object-fit: cover;
     background: linear-gradient(135deg, var(--ocean), var(--mid));
@@ -331,13 +348,6 @@
   .logbook-excerpt {
     font-size: 0.88rem; line-height: 1.75; color: var(--text); flex: 1;
   }
-  @media (max-width: 900px) {
-    .logbook-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  }
-  @media (max-width: 768px) {
-    .logbook-grid { grid-template-columns: 1fr; }
-  }
-
   /* ── INSTAGRAM FEED ── */
   #gallery { background: var(--deep); }
   .insta-embed-wrap { max-width: 1060px; margin: 0 auto; }
@@ -742,22 +752,22 @@
   <h2 class="section-title reveal" data-i18n="logbook_title_html">Captain's <em>Journal</em></h2>
   <p class="section-body reveal" data-i18n="logbook_sub">Stories, travels, and moments from life on the water.</p>
 
-  <!-- Loading state -->
   <div id="logbook-loading" style="text-align:center; padding:3rem 0; color:var(--muted);">
     <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase;">Loading posts...</div>
   </div>
 
-  <!-- Posts grid -->
   <div id="logbook-grid" class="logbook-grid" style="display:none;"></div>
 
-  <!-- Empty state -->
-  <div id="logbook-empty" style="display:none; text-align:center; padding:3rem 0;">
-    <p style="color:var(--muted); font-size:0.95rem;">No posts yet — check back soon!</p>
+  <div id="logbook-viewall" style="display:none; text-align:center; margin-top:3rem;">
+    <a href="/logbook" class="btn-primary" data-i18n="logbook_viewall">View All Stories →</a>
   </div>
 
-  <!-- Error state -->
+  <div id="logbook-empty" style="display:none; text-align:center; padding:3rem 0;">
+    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_empty">No posts yet — check back soon!</p>
+  </div>
+
   <div id="logbook-error" style="display:none; text-align:center; padding:3rem 0;">
-    <p style="color:var(--muted); font-size:0.95rem;">Could not load posts. Please try again later.</p>
+    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_error">Could not load posts. Please try again later.</p>
   </div>
 </section>
 
@@ -898,41 +908,46 @@ async function loadLogbook() {
       return;
     }
 
+    // Show only 3 most recent on homepage
+    const recentPosts = data.posts.slice(0, 3);
+
     grid.style.display = 'grid';
-    grid.innerHTML = data.posts.map(post => {
-      // Format date nicely
+    grid.innerHTML = recentPosts.map(post => {
       const date = post.date ? new Date(post.date).toLocaleDateString(
         currentLang === 'fr' ? 'fr-CA' : 'en-CA',
         { year: 'numeric', month: 'long', day: 'numeric' }
       ) : '';
 
-      // Truncate body to excerpt
       const excerpt = post.body && post.body.length > 160
-        ? post.body.substring(0, 160).trim() + '…'
-        : post.body || '';
+        ? post.body.replace(/[#*`_]/g, '').substring(0, 160).trim() + '…'
+        : (post.body || '').replace(/[#*`_]/g, '');
 
-      // Image or placeholder
       const imgHtml = post.image
         ? `<img class="logbook-img" src="${post.image}" alt="${post.title}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
            <div class="logbook-img-placeholder" style="display:none;">⛵</div>`
         : `<div class="logbook-img-placeholder">⛵</div>`;
 
       return `
-        <div class="logbook-card reveal">
+        <a href="/logbook/${post.slug}" class="logbook-card reveal">
           ${imgHtml}
           <div class="logbook-body">
             <div class="logbook-date">${date}</div>
             <div class="logbook-title">${post.title}</div>
             <p class="logbook-excerpt">${excerpt}</p>
+            <span class="logbook-link">Read Story →</span>
           </div>
-        </div>
+        </a>
       `;
     }).join('');
 
-    // Trigger reveal animation on new cards
-    grid.querySelectorAll('.reveal').forEach(el => {
-      observer.observe(el);
-    });
+    // Show "View All" button if more than 3 posts
+    if (data.posts.length > 3) {
+      const viewAll = document.getElementById('logbook-viewall');
+      if (viewAll) viewAll.style.display = 'block';
+    }
+
+    // Trigger reveal animations
+    grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   } catch (err) {
     loading.style.display = 'none';
@@ -941,7 +956,6 @@ async function loadLogbook() {
   }
 }
 
-// Load logbook on page load
 loadLogbook();
 
 // ── COPYRIGHT YEAR ──
@@ -961,7 +975,10 @@ const i18n = {
     nav_logbook: "Logbook",
     logbook_tag: "From the Logbook",
     logbook_title_html: "Captain's <em>Journal</em>",
-    logbook_sub: "Stories, travels, and moments from life on the water.", nav_services: "Services", nav_experiences: "Experiences",
+    logbook_sub: "Stories, travels, and moments from life on the water.",
+    logbook_viewall: "View All Stories →",
+    logbook_empty: "No posts yet — check back soon!",
+    logbook_error: "Could not load posts. Please try again later.", nav_services: "Services", nav_experiences: "Experiences",
     nav_gallery: "Gallery", nav_reviews: "Reviews", nav_book: "Book Now",
     hero_eyebrow: "Certified Sailing Instructor & Professional Skipper",
     hero_title_html: "Set Sail.<br><em>Chart Your</em><br>Adventure.",
@@ -1020,7 +1037,10 @@ const i18n = {
     nav_logbook: "Journal de Bord",
     logbook_tag: "Du Journal de Bord",
     logbook_title_html: "Journal du <em>Capitaine</em>",
-    logbook_sub: "Histoires, voyages et moments de vie sur l'eau.", nav_services: "Services", nav_experiences: "Expériences",
+    logbook_sub: "Histoires, voyages et moments de vie sur l'eau.",
+    logbook_viewall: "Voir Toutes les Histoires →",
+    logbook_empty: "Aucune publication pour l'instant — revenez bientôt !",
+    logbook_error: "Impossible de charger les publications. Veuillez réessayer plus tard.", nav_services: "Services", nav_experiences: "Expériences",
     nav_gallery: "Galerie", nav_reviews: "Avis", nav_book: "Réserver",
     hero_eyebrow: "Instructeur de voile certifié & Skipper professionnel",
     hero_title_html: "Prenez le vent.<br><em>Tracez Votre</em><br>Aventure.",
