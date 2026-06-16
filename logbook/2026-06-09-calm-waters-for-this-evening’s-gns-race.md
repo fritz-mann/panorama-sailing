@@ -1,5 +1,5 @@
 ---
-title: "Calm waters for this evening’s GNS race "
+title: "Calm waters for this evening’s GNS Club race "
 date: 2026-06-09T19:34:00.000-04:00
 image: /images/logbook/img_6092.jpeg
 published: true
