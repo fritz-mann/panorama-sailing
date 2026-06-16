@@ -1,7 +1,7 @@
 ---
 title: "Pink sunset sky for our new students "
-date: 2026-06-15T18:56:00.000-04:00
+date: 2026-06-15T18:33:00.000-04:00
 image: /images/logbook/img_6091.jpeg
 published: true
 ---
-These are the colors that have inspired many artists. Students getting the boats ready to head out for tonight’s lesson on choosing the right sails, reefing early and preparing for strong winds and gusts.
+These skies have inspired many artists. Students getting the boats ready to head out for tonight’s lesson on choosing the right sails, reefing early and preparing for strong winds and gusts.
