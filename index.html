@@ -517,9 +517,9 @@
   <a href="#hero" class="nav-logo">Panorama<span>⬥</span>Sailing</a>
   <ul class="nav-links">
     <li><a href="#about" data-i18n="nav_about">About</a></li>
+    <li><a href="#blog" data-i18n="nav_logbook">Blog</a></li>
     <li><a href="#services" data-i18n="nav_services">Services</a></li>
     <li><a href="#experiences" data-i18n="nav_experiences">Experiences</a></li>
-    <li><a href="#logbook" data-i18n="nav_logbook">Logbook</a></li>
     <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
     <li><a href="#testimonials" data-i18n="nav_reviews">Reviews</a></li>
   </ul>
@@ -532,9 +532,9 @@
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobile()" data-i18n="nav_about">About</a>
+  <a href="#blog" onclick="closeMobile()" data-i18n="nav_logbook">Blog</a>
   <a href="#services" onclick="closeMobile()" data-i18n="nav_services">Services</a>
   <a href="#experiences" onclick="closeMobile()" data-i18n="nav_experiences">Experiences</a>
-  <a href="#logbook" onclick="closeMobile()" data-i18n="nav_logbook">Logbook</a>
   <a href="#gallery" onclick="closeMobile()" data-i18n="nav_gallery">Gallery</a>
   <a href="#testimonials" onclick="closeMobile()" data-i18n="nav_reviews">Reviews</a>
   <a href="#contact" onclick="closeMobile()" class="mobile-book" data-i18n="nav_book">Book Now</a>
@@ -612,6 +612,31 @@
       <span class="cred-tag" data-i18n="cred_regattas">Sailing Regattas</span>
       <span class="cred-tag" data-i18n="cred_pcoc">PCOC Instructor</span>
     </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" style="background:var(--deep);">
+  <div class="section-tag reveal" data-i18n="logbook_tag">From the Blog</div>
+  <h2 class="section-title reveal" data-i18n="logbook_title_html">Captain's <em>Journal</em></h2>
+  <p class="section-body reveal" data-i18n="logbook_sub">Stories, travels, and moments from life on the water.</p>
+
+  <div id="logbook-loading" style="text-align:center; padding:3rem 0; color:var(--muted);">
+    <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase;">Loading posts...</div>
+  </div>
+
+  <div id="logbook-grid" class="logbook-grid" style="display:none;"></div>
+
+  <div id="logbook-viewall" style="display:none; text-align:center; margin-top:3rem;">
+    <a href="/logbook" class="btn-primary" data-i18n="logbook_viewall">View All Posts →</a>
+  </div>
+
+  <div id="logbook-empty" style="display:none; text-align:center; padding:3rem 0;">
+    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_empty">No posts yet — check back soon!</p>
+  </div>
+
+  <div id="logbook-error" style="display:none; text-align:center; padding:3rem 0;">
+    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_error">Could not load posts. Please try again later.</p>
   </div>
 </section>
 
@@ -743,31 +768,6 @@
         <a href="https://www.instagram.com/sailingpanorama/" target="_blank" rel="noopener" class="btn-primary" data-i18n="insta_btn">View Full Feed on Instagram</a>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- LOGBOOK -->
-<section id="logbook" style="background:var(--navy);">
-  <div class="section-tag reveal" data-i18n="logbook_tag">From the Logbook</div>
-  <h2 class="section-title reveal" data-i18n="logbook_title_html">Captain's <em>Journal</em></h2>
-  <p class="section-body reveal" data-i18n="logbook_sub">Stories, travels, and moments from life on the water.</p>
-
-  <div id="logbook-loading" style="text-align:center; padding:3rem 0; color:var(--muted);">
-    <div style="font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase;">Loading posts...</div>
-  </div>
-
-  <div id="logbook-grid" class="logbook-grid" style="display:none;"></div>
-
-  <div id="logbook-viewall" style="display:none; text-align:center; margin-top:3rem;">
-    <a href="/logbook" class="btn-primary" data-i18n="logbook_viewall">View All Stories →</a>
-  </div>
-
-  <div id="logbook-empty" style="display:none; text-align:center; padding:3rem 0;">
-    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_empty">No posts yet — check back soon!</p>
-  </div>
-
-  <div id="logbook-error" style="display:none; text-align:center; padding:3rem 0;">
-    <p style="color:var(--muted); font-size:0.95rem;" data-i18n="logbook_error">Could not load posts. Please try again later.</p>
   </div>
 </section>
 
@@ -972,11 +972,11 @@ document.getElementById('copyright-year').textContent = new Date().getFullYear()
 // ── TRANSLATIONS ──
 const i18n = {
   en: {
-    nav_logbook: "Logbook",
-    logbook_tag: "From the Logbook",
+    nav_logbook: "Blog",
+    logbook_tag: "From the Blog",
     logbook_title_html: "Captain's <em>Journal</em>",
     logbook_sub: "Stories, travels, and moments from life on the water.",
-    logbook_viewall: "View All Stories →",
+    logbook_viewall: "View All Posts →",
     logbook_empty: "No posts yet — check back soon!",
     logbook_error: "Could not load posts. Please try again later.", nav_services: "Services", nav_experiences: "Experiences",
     nav_gallery: "Gallery", nav_reviews: "Reviews", nav_book: "Book Now",
@@ -1034,11 +1034,11 @@ const i18n = {
     dest_croatia: "Croatia", dest_malta: "Malta", dest_carib: "Caribbean", dest_usa: "USA"
   },
   fr: {
-    nav_logbook: "Journal de Bord",
-    logbook_tag: "Du Journal de Bord",
+    nav_logbook: "Blog",
+    logbook_tag: "Du Blog",
     logbook_title_html: "Journal du <em>Capitaine</em>",
     logbook_sub: "Histoires, voyages et moments de vie sur l'eau.",
-    logbook_viewall: "Voir Toutes les Histoires →",
+    logbook_viewall: "Voir Tous les Articles →",
     logbook_empty: "Aucune publication pour l'instant — revenez bientôt !",
     logbook_error: "Impossible de charger les publications. Veuillez réessayer plus tard.", nav_services: "Services", nav_experiences: "Expériences",
     nav_gallery: "Galerie", nav_reviews: "Avis", nav_book: "Réserver",
