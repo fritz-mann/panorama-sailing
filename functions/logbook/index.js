@@ -53,7 +53,26 @@ export async function onRequest(context) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logbook — Panorama Sailing</title>
+  <title>Captain's Journal — Panorama Sailing</title>
+  <meta name="description" content="Stories, travels, and moments from life on the water. Read all posts from the Panorama Sailing Captain's Journal." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://panoramasailing.com/logbook" />
+  <meta property="og:title" content="Captain's Journal — Panorama Sailing" />
+  <meta property="og:description" content="Stories, travels, and moments from life on the water." />
+  <meta property="og:image" content="https://images.panoramasailing.com/hero.jpg" />
+  <meta property="og:site_name" content="Panorama Sailing" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SDJ0B3XCJ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SDJ0B3XCJ5');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
@@ -72,8 +91,7 @@ export async function onRequest(context) {
       background:rgba(6,16,32,0.97);
       border-bottom:1px solid rgba(45,143,196,0.15);
       display:flex; align-items:center; justify-content:space-between;
-      padding:1rem 4rem;
-      position:sticky; top:0; z-index:100;
+      padding:1rem 4rem; position:sticky; top:0; z-index:100;
     }
     .nav-logo { font-family:'Bebas Neue','Barlow Condensed',sans-serif; font-weight:400; font-size:1.5rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--white); }
     .nav-logo span { color:var(--gold); }
@@ -81,52 +99,25 @@ export async function onRequest(context) {
     .nav-back:hover { gap:0.8rem; }
 
     /* HEADER */
-    .archive-header {
-      background:var(--navy);
-      padding:5rem 4rem 4rem;
-      border-bottom:1px solid rgba(45,143,196,0.15);
-    }
-    .section-tag {
-      font-family:'Barlow Condensed',sans-serif; font-weight:500; font-size:0.75rem;
-      letter-spacing:0.3em; text-transform:uppercase; color:var(--gold);
-      display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;
-    }
+    .archive-header { background:var(--navy); padding:5rem 4rem 4rem; border-bottom:1px solid rgba(45,143,196,0.15); }
+    .section-tag { font-family:'Barlow Condensed',sans-serif; font-weight:500; font-size:0.75rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem; }
     .section-tag::before { content:''; display:block; width:24px; height:1px; background:var(--gold); }
     .archive-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:700; color:var(--white); line-height:1.1; }
     .archive-title em { color:var(--sky); font-style:italic; }
     .archive-count { font-size:0.88rem; color:var(--muted); margin-top:0.8rem; }
 
     /* GRID */
-    .archive-grid {
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:2rem; padding:4rem;
-      max-width:1400px; margin:0 auto;
-    }
-    .post-card {
-      background:var(--navy); border:1px solid rgba(45,143,196,0.15);
-      overflow:hidden; transition:border-color 0.3s, transform 0.3s;
-      display:flex; flex-direction:column;
-    }
+    .archive-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; padding:4rem; max-width:1400px; margin:0 auto; }
+    .post-card { background:var(--navy); border:1px solid rgba(45,143,196,0.15); overflow:hidden; transition:border-color 0.3s, transform 0.3s; display:flex; flex-direction:column; }
     .post-card:hover { border-color:rgba(14,158,158,0.4); transform:translateY(-4px); }
-    .post-card-img {
-      width:100%; aspect-ratio:16/9; object-fit:cover; display:block;
-      background:linear-gradient(135deg,var(--ocean),var(--mid));
-    }
-    .post-card-img-placeholder {
-      width:100%; aspect-ratio:16/9;
-      background:linear-gradient(135deg,var(--ocean),var(--mid));
-      display:flex; align-items:center; justify-content:center;
-      font-size:3rem; color:rgba(168,213,240,0.2);
-    }
+    .post-card-img { width:100%; aspect-ratio:16/9; object-fit:cover; display:block; background:linear-gradient(135deg,var(--ocean),var(--mid)); }
+    .post-card-img-placeholder { width:100%; aspect-ratio:16/9; background:linear-gradient(135deg,var(--ocean),var(--mid)); display:flex; align-items:center; justify-content:center; font-size:3rem; color:rgba(168,213,240,0.2); }
     .post-card-body { padding:1.8rem; flex:1; display:flex; flex-direction:column; }
     .post-card-date { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem; }
     .post-card-title { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; color:var(--white); margin-bottom:0.8rem; line-height:1.3; }
     .post-card-excerpt { font-size:0.88rem; line-height:1.75; color:var(--text); flex:1; }
     .post-card-link { display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.2rem; font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); transition:gap 0.2s; }
     .post-card:hover .post-card-link { gap:0.8rem; }
-
-    /* EMPTY */
-    .archive-empty { text-align:center; padding:6rem 2rem; color:var(--muted); }
 
     /* FOOTER */
     footer { background:var(--deep); border-top:1px solid rgba(45,143,196,0.15); padding:2.5rem 4rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
@@ -154,15 +145,15 @@ export async function onRequest(context) {
 
 <div class="archive-header">
   <div class="section-tag">Captain's Journal</div>
-  <h1 class="archive-title">All <em>Stories</em></h1>
+  <h1 class="archive-title">All <em>Posts</em></h1>
   <p class="archive-count">${publishedPosts.length} post${publishedPosts.length !== 1 ? 's' : ''}</p>
 </div>
 
 <div class="archive-grid">
   ${publishedPosts.length === 0
-    ? `<div class="archive-empty" style="grid-column:span 3;">
+    ? `<div style="grid-column:span 3; text-align:center; padding:6rem 2rem; color:var(--muted);">
         <p>No posts yet — check back soon!</p>
-      </div>`
+       </div>`
     : publishedPosts.map(post => {
         const date = post.date
           ? new Date(post.date).toLocaleDateString('en-CA', { year:'numeric', month:'long', day:'numeric' })
@@ -178,7 +169,7 @@ export async function onRequest(context) {
               <div class="post-card-date">${date}</div>
               <div class="post-card-title">${post.title}</div>
               <p class="post-card-excerpt">${post.excerpt}</p>
-              <span class="post-card-link">Read Story →</span>
+              <span class="post-card-link">Read Post →</span>
             </div>
           </a>`;
       }).join('')
@@ -194,11 +185,14 @@ export async function onRequest(context) {
 </html>`;
 
     return new Response(html, {
-      headers: { "Content-Type": "text/html;charset=UTF-8" },
+      headers: {
+        "Content-Type": "text/html;charset=UTF-8",
+        "Cache-Control": "public, max-age=300",
+      },
     });
 
   } catch (err) {
-    return new Response(`<h1>Error loading logbook</h1><p>${err.message}</p>`, {
+    return new Response(`<h1>Error loading posts</h1><p>${err.message}</p>`, {
       status: 500,
       headers: { "Content-Type": "text/html" },
     });
