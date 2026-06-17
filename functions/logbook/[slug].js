@@ -44,6 +44,16 @@ export async function onRequest(context) {
     const youtube = data.youtube || "";
     const instagram = data.instagram || "";
 
+    // Post URL for sharing
+    const postUrl = `https://panoramasailing.com/logbook/${slug}`;
+    const encodedUrl = encodeURIComponent(postUrl);
+    const encodedTitle = encodeURIComponent(title);
+
+    // Share URLs
+    const shareWhatsApp = `https://wa.me/?text=${encodedTitle}%20${encodedUrl}`;
+    const shareFacebook = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+    const shareX = `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`;
+
     // Convert YouTube URL to embed URL
     let youtubeEmbed = "";
     if (youtube) {
@@ -67,9 +77,30 @@ export async function onRequest(context) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title} — Panorama Sailing</title>
   <meta name="description" content="${body.replace(/[#*`_]/g, '').substring(0, 160)}" />
-  <meta property="og:title" content="${title} — Panorama Sailing" />
-  <meta property="og:image" content="${image}" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SDJ0B3XCJ5"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-SDJ0B3XCJ5');
+  </script>
+
+  <!-- Open Graph -->
   <meta property="og:type" content="article" />
+  <meta property="og:url" content="${postUrl}" />
+  <meta property="og:title" content="${title} — Panorama Sailing" />
+  <meta property="og:description" content="${body.replace(/[#*`_]/g, '').substring(0, 160)}" />
+  <meta property="og:image" content="${image || 'https://images.panoramasailing.com/hero.jpg'}" />
+  <meta property="og:site_name" content="Panorama Sailing" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${title} — Panorama Sailing" />
+  <meta name="twitter:description" content="${body.replace(/[#*`_]/g, '').substring(0, 160)}" />
+  <meta name="twitter:image" content="${image || 'https://images.panoramasailing.com/hero.jpg'}" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
@@ -99,16 +130,11 @@ export async function onRequest(context) {
     .nav-back:hover { gap:0.8rem; }
 
     /* HERO IMAGE */
-    .post-hero {
-      width:100%; max-height:520px; object-fit:cover; display:block;
-    }
+    .post-hero { width:100%; max-height:520px; object-fit:cover; display:block; }
 
     /* POST CONTENT */
     .post-container { max-width:780px; margin:0 auto; padding:4rem 2rem 6rem; }
-    .post-meta {
-      display:flex; align-items:center; gap:1rem;
-      margin-bottom:1.5rem; flex-wrap:wrap;
-    }
+    .post-meta { display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap; }
     .post-date { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); }
     .post-title { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); font-weight:700; color:var(--white); line-height:1.15; margin-bottom:2rem; }
     .post-divider { width:48px; height:2px; background:var(--gold); margin-bottom:2.5rem; }
@@ -141,8 +167,39 @@ export async function onRequest(context) {
     .instagram-fallback { text-align:center; padding:2rem; background:var(--navy); border:1px solid rgba(45,143,196,0.2); }
     .instagram-fallback a { color:var(--gold); font-family:'Barlow Condensed',sans-serif; letter-spacing:0.1em; text-transform:uppercase; font-size:0.85rem; }
 
-    /* NAV BUTTONS */
-    .post-nav { display:flex; justify-content:space-between; align-items:center; margin-top:4rem; padding-top:2rem; border-top:1px solid rgba(45,143,196,0.15); flex-wrap:wrap; gap:1rem; }
+    /* SHARE BUTTONS */
+    .share-section {
+      margin:3rem 0 0;
+      padding:2rem 0;
+      border-top:1px solid rgba(45,143,196,0.15);
+    }
+    .share-label {
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.75rem; letter-spacing:0.25em; text-transform:uppercase;
+      color:var(--muted); margin-bottom:1.2rem;
+      display:flex; align-items:center; gap:0.8rem;
+    }
+    .share-label::before { content:''; display:block; width:20px; height:1px; background:var(--muted); }
+    .share-buttons {
+      display:flex; flex-wrap:wrap; gap:0.8rem;
+    }
+    .share-btn {
+      display:inline-flex; align-items:center; gap:0.5rem;
+      padding:0.6rem 1.2rem;
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+      font-weight:500; border:1px solid rgba(45,143,196,0.3);
+      color:var(--text); background:transparent;
+      cursor:pointer; transition:all 0.2s;
+      text-decoration:none;
+    }
+    .share-btn:hover { border-color:var(--gold); color:var(--gold); }
+    .share-btn.whatsapp:hover { border-color:#25d366; color:#25d366; }
+    .share-btn.facebook:hover { border-color:#1877f2; color:#1877f2; }
+    .share-btn.copy-btn.copied { border-color:var(--gold-lt); color:var(--gold-lt); }
+
+    /* POST NAV */
+    .post-nav { display:flex; justify-content:space-between; align-items:center; margin-top:3rem; padding-top:2rem; border-top:1px solid rgba(45,143,196,0.15); flex-wrap:wrap; gap:1rem; }
     .post-nav a { font-family:'Barlow Condensed',sans-serif; font-size:0.82rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:0.5rem; transition:gap 0.2s; }
     .post-nav a:hover { gap:0.8rem; }
 
@@ -155,6 +212,8 @@ export async function onRequest(context) {
     @media (max-width:768px) {
       nav { padding:1rem 1.5rem; }
       .post-container { padding:2.5rem 1.4rem 4rem; }
+      .share-buttons { gap:0.6rem; }
+      .share-btn { padding:0.55rem 1rem; font-size:0.75rem; }
       footer { padding:2rem 1.5rem; flex-direction:column; text-align:center; }
     }
   </style>
@@ -163,7 +222,7 @@ export async function onRequest(context) {
 
 <nav>
   <a href="/" class="nav-logo">Panorama<span>⬥</span>Sailing</a>
-  <a href="/logbook" class="nav-back">← All Stories</a>
+  <a href="/logbook" class="nav-back">← All Posts</a>
 </nav>
 
 ${image ? `<img class="post-hero" src="${image}" alt="${title}" />` : ''}
@@ -196,8 +255,35 @@ ${image ? `<img class="post-hero" src="${image}" alt="${title}" />` : ''}
     </div>
   </div>` : ''}
 
+  <!-- SHARE BUTTONS -->
+  <div class="share-section">
+    <div class="share-label">Share this post</div>
+    <div class="share-buttons">
+      <!-- WhatsApp -->
+      <a href="${shareWhatsApp}" target="_blank" rel="noopener" class="share-btn whatsapp">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+      <!-- Facebook -->
+      <a href="${shareFacebook}" target="_blank" rel="noopener" class="share-btn facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <!-- X / Twitter -->
+      <a href="${shareX}" target="_blank" rel="noopener" class="share-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X / Twitter
+      </a>
+      <!-- Copy Link -->
+      <button class="share-btn copy-btn" onclick="copyLink(this)" data-url="${postUrl}">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span>Copy Link</span>
+      </button>
+    </div>
+  </div>
+
   <div class="post-nav">
-    <a href="/logbook">← All Stories</a>
+    <a href="/logbook">← All Posts</a>
     <a href="/#contact">Book an Experience →</a>
   </div>
 </div>
@@ -208,8 +294,33 @@ ${image ? `<img class="post-hero" src="${image}" alt="${title}" />` : ''}
 </footer>
 
 <script>
+  // Render markdown body
   const raw = ${JSON.stringify(body)};
   document.getElementById('post-body').innerHTML = marked.parse(raw);
+
+  // Copy link to clipboard
+  function copyLink(btn) {
+    const url = btn.getAttribute('data-url');
+    navigator.clipboard.writeText(url).then(() => {
+      btn.classList.add('copied');
+      btn.querySelector('span').textContent = '✓ Copied!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.querySelector('span').textContent = 'Copy Link';
+      }, 2500);
+    }).catch(() => {
+      // Fallback for older browsers
+      const el = document.createElement('textarea');
+      el.value = url;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      btn.querySelector('span').textContent = '✓ Copied!';
+      setTimeout(() => { btn.querySelector('span').textContent = 'Copy Link'; }, 2500);
+    });
+  }
+
   ${instagramEmbed ? `
   // Load Instagram embed script
   const igScript = document.createElement('script');
@@ -251,7 +362,7 @@ function notFoundPage() {
 <body>
   <h1>Post not found</h1>
   <p>This story may have moved or been unpublished.</p>
-  <a href="/logbook">← Back to all stories</a>
+  <a href="/logbook">← Back to all posts</a>
 </body>
 </html>`;
 }
