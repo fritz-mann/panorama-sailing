@@ -1,8 +1,5 @@
 export async function onRequest(context) {
-  const { env } = context;
-
   try {
-    // Fetch the list of files in the logbook folder from GitHub
     const repoResponse = await fetch(
       `https://api.github.com/repos/fritz-mann/panorama-sailing/contents/logbook`,
       {
@@ -21,32 +18,32 @@ export async function onRequest(context) {
     }
 
     const files = await repoResponse.json();
-    const mdFiles = files.filter(f => f.name.endsWith(".md"));
+    const mdFiles = files.filter(f => f.name.endsWith(".md") && f.name !== ".gitkeep");
 
-    // Fetch and parse each markdown file
     const posts = await Promise.all(
       mdFiles.map(async (file) => {
         const fileResponse = await fetch(file.download_url);
         const raw = await fileResponse.text();
 
-        // Parse frontmatter (simple YAML between --- markers)
         const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
         if (!match) return null;
 
         const frontmatter = match[1];
         const body = match[2].trim();
-
         const data = {};
         frontmatter.split("\n").forEach(line => {
           const idx = line.indexOf(":");
           if (idx === -1) return;
           const key = line.slice(0, idx).trim();
-          let value = line.slice(idx + 1).trim();
-          value = value.replace(/^["']|["']$/g, ""); // strip quotes
+          let value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
           data[key] = value;
         });
 
+        // Slug is the filename without .md
+        const slug = file.name.replace(".md", "");
+
         return {
+          slug,
           title: data.title || "Untitled",
           date: data.date || "",
           image: data.image || "",
@@ -56,7 +53,6 @@ export async function onRequest(context) {
       })
     );
 
-    // Filter published posts and sort by date descending
     const publishedPosts = posts
       .filter(p => p && p.published)
       .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -64,9 +60,10 @@ export async function onRequest(context) {
     return new Response(JSON.stringify({ posts: publishedPosts }), {
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=300", // cache 5 min
+        "Cache-Control": "public, max-age=300",
       },
     });
+
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
