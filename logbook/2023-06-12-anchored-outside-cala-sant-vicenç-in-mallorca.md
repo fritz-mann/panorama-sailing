@@ -1,0 +1,9 @@
+---
+title: Anchored outside Cala Sant Vicenç in Mallorca
+date: 2023-06-12T17:23:00.000-04:00
+image: /images/logbook/anchored-outside-cala-sant-vicenç-in-mallorca.jpg
+published: true
+---
+Stunning turquoise waters and dramatic cliffs, but extreme caution is required because you are highly exposed to the north and northeast winds so conditions can make anchoring dangerous, and hidden shoals demand a safe distance from the shore.
+
+Port de Pollença is the nearest major marina, located roughly 16.3 nautical miles away but Cala Sant Vicenç is one of Mallorca's most peaceful and secluded enclaves, the perfect place to enjoy a holiday in total harmony with the Mediterranean. One of many hidden gems on Mallorca.
