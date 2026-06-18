@@ -205,11 +205,14 @@ export async function onRequest(context) {
   <p class="footer-copy">&copy; ${new Date().getFullYear()} Panorama Sailing. ${t.rights}</p>
 </footer>
 
+<div id="posts-data" data-posts="${postsBase64}" style="display:none;"></div>
+
 <script>
 (function() {
   try {
-    // Decode posts from base64
-    var encoded = '${postsBase64}';
+    // Read posts data from data attribute — avoids any JS string escaping issues
+    var el = document.getElementById('posts-data');
+    var encoded = el.getAttribute('data-posts');
     var decoded = decodeURIComponent(escape(atob(encoded)));
     var allPosts = JSON.parse(decoded);
 
