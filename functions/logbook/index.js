@@ -104,7 +104,7 @@ export async function onRequest(context) {
     }));
 
     // Safely encode posts as base64 to avoid any HTML/JS escaping issues
-    const postsBase64 = Buffer.from(JSON.stringify(formattedPosts)).toString('base64');
+    const postsBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(formattedPosts))));
 
     const html = `<!DOCTYPE html>
 <html lang="${lang}">
@@ -209,7 +209,7 @@ export async function onRequest(context) {
 (function() {
   // Decode posts from base64 to avoid any escaping issues
   var encoded = '${postsBase64}';
-  var allPosts = JSON.parse(atob(encoded));
+  var allPosts = JSON.parse(decodeURIComponent(escape(atob(encoded))));
 
   var readPost = '${t.readPost.replace(/'/g, "\\'")}';
   var noResultsText = '${t.noResults.replace(/'/g, "\\'")}';
