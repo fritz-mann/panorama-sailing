@@ -49,6 +49,10 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Default to denied until user consents (GDPR/CASL compliance)
+  gtag('consent', 'default', {
+    analytics_storage: localStorage.getItem('cookie-consent') === 'accepted' ? 'granted' : 'denied'
+  });
   gtag('js', new Date());
   gtag('config', 'G-SDJ0B3XCJ5');
 </script>
@@ -1082,6 +1086,9 @@ const i18n = {
     form_note: "I typically respond within 24 hours.",
     form_submit: "Send Message", form_success: "✓ Message sent! I'll be in touch soon.",
     footer_rights: "All rights reserved.",
+    cookie_text: "We use cookies to analyse site traffic and improve your experience. By clicking \"Accept\", you consent to our use of cookies in accordance with our privacy policy.",
+    cookie_accept: "Accept",
+    cookie_decline: "Decline",
     dest_greece: "Greece", dest_italy: "Italy", dest_france: "France", dest_spain: "Spain",
     dest_croatia: "Croatia", dest_malta: "Malta", dest_carib: "Caribbean", dest_usa: "USA"
   },
@@ -1145,6 +1152,9 @@ const i18n = {
     form_note: "Je réponds généralement dans les 24 heures.",
     form_submit: "Envoyer le Message", form_success: "✓ Message envoyé ! Je vous recontacterai bientôt.",
     footer_rights: "Tous droits réservés.",
+    cookie_text: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. En cliquant sur « Accepter », vous consentez à notre utilisation des cookies conformément à notre politique de confidentialité.",
+    cookie_accept: "Accepter",
+    cookie_decline: "Refuser",
     dest_greece: "Grèce", dest_italy: "Italie", dest_france: "France", dest_spain: "Espagne",
     dest_croatia: "Croatie", dest_malta: "Malte", dest_carib: "Caraïbes", dest_usa: "États-Unis"
   }
@@ -1247,6 +1257,77 @@ async function handleSubmit(e) {
     btn.textContent = i18n[currentLang].form_submit;
   }
 }
+// ── COOKIE CONSENT ──
+(function() {
+  const banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  // Check if already consented
+  if (localStorage.getItem('cookie-consent')) {
+    banner.style.display = 'none';
+    return;
+  }
+
+  // Show banner after short delay
+  setTimeout(() => {
+    banner.style.opacity = '1';
+    banner.style.transform = 'translateY(0)';
+  }, 1500);
+
+  document.getElementById('cookie-accept').addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'accepted');
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateY(100%)';
+    setTimeout(() => banner.style.display = 'none', 400);
+    // Enable Google Analytics tracking
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  });
+
+  document.getElementById('cookie-decline').addEventListener('click', () => {
+    localStorage.setItem('cookie-consent', 'declined');
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateY(100%)';
+    setTimeout(() => banner.style.display = 'none', 400);
+    // Disable Google Analytics tracking
+    gtag('consent', 'update', { analytics_storage: 'denied' });
+  });
+})();
 </script>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="
+  position:fixed; bottom:0; left:0; right:0; z-index:999;
+  background:rgba(10,22,40,0.98);
+  border-top:1px solid rgba(45,143,196,0.25);
+  padding:1.2rem 2rem;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:1rem;
+  opacity:0; transform:translateY(100%);
+  transition:opacity 0.4s, transform 0.4s;
+  backdrop-filter:blur(10px);
+">
+  <div style="flex:1; min-width:280px;">
+    <p style="font-size:0.82rem; color:var(--text); line-height:1.6;" data-i18n="cookie_text">
+      We use cookies to analyse site traffic and improve your experience. By clicking "Accept", you consent to our use of cookies in accordance with our privacy policy.
+    </p>
+  </div>
+  <div style="display:flex; gap:0.8rem; flex-shrink:0; flex-wrap:wrap;">
+    <button id="cookie-decline" style="
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+      background:transparent; border:1px solid rgba(45,143,196,0.3);
+      color:var(--muted); padding:0.5rem 1.2rem; cursor:pointer;
+      transition:all 0.2s;
+    " data-i18n="cookie_decline">Decline</button>
+    <button id="cookie-accept" style="
+      font-family:'Barlow Condensed',sans-serif;
+      font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase;
+      background:var(--gold); border:none;
+      color:var(--white); padding:0.5rem 1.2rem; cursor:pointer;
+      transition:all 0.2s;
+    " data-i18n="cookie_accept">Accept</button>
+  </div>
+</div>
+
 </body>
 </html>
