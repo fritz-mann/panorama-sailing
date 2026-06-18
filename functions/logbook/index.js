@@ -207,61 +207,81 @@ export async function onRequest(context) {
 
 <script>
 (function() {
-  // Decode posts from base64 to avoid any escaping issues
-  var encoded = '${postsBase64}';
-  var allPosts = JSON.parse(decodeURIComponent(escape(atob(encoded))));
+  try {
+    // Decode posts from base64
+    var encoded = '${postsBase64}';
+    var decoded = decodeURIComponent(escape(atob(encoded)));
+    var allPosts = JSON.parse(decoded);
 
-  var readPost = '${t.readPost.replace(/'/g, "\\'")}';
-  var noResultsText = '${t.noResults.replace(/'/g, "\\'")}';
-  var noPostsText = '${t.noPosts.replace(/'/g, "\\'")}';
-  var postsLabel = '${t.posts}';
-  var postLabel = '${t.post}';
+    var readPost = '${t.readPost.replace(/'/g, "\\'")}';
+    var noResultsText = '${t.noResults.replace(/'/g, "\\'")}';
+    var noPostsText = '${t.noPosts.replace(/'/g, "\\'")}';
+    var postsLabel = '${t.posts}';
+    var postLabel = '${t.post}';
 
-  function escapeHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
-
-  function renderPosts(posts) {
-    var grid = document.getElementById('posts-grid');
-    var count = document.getElementById('post-count');
-    count.textContent = posts.length + ' ' + (posts.length !== 1 ? postsLabel : postLabel);
-
-    if (posts.length === 0) {
-      grid.innerHTML = '<div class="no-results">' + (allPosts.length === 0 ? noPostsText : noResultsText) + '</div>';
-      return;
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
-    grid.innerHTML = posts.map(function(post) {
-      var imgHtml = post.image
-        ? '<img class="post-card-img" src="' + escapeHtml(post.image) + '" alt="' + escapeHtml(post.title) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" /><div class="post-card-img-placeholder" style="display:none;">&#9917;</div>'
-        : '<div class="post-card-img-placeholder">&#9917;</div>';
-      return '<a href="/logbook/' + escapeHtml(post.slug) + '" class="post-card">' +
-        imgHtml +
-        '<div class="post-card-body">' +
-          '<div class="post-card-date">' + escapeHtml(post.date) + '</div>' +
-          '<div class="post-card-title">' + escapeHtml(post.title) + '</div>' +
-          '<p class="post-card-excerpt">' + escapeHtml(post.excerpt) + '</p>' +
-          '<span class="post-card-link">' + readPost + '</span>' +
-        '</div></a>';
-    }).join('');
+    function renderPosts(posts) {
+      var grid = document.getElementById('posts-grid');
+      var count = document.getElementById('post-count');
+      if (!grid || !count) return;
+
+      count.textContent = posts.length + ' ' + (posts.length !== 1 ? postsLabel : postLabel);
+
+      if (posts.length === 0) {
+        grid.innerHTML = '<div class="no-results">' + (allPosts.length === 0 ? noPostsText : noResultsText) + '</div>';
+        return;
+      }
+
+      grid.innerHTML = posts.map(function(post) {
+        var imgHtml = post.image
+          ? '<img class="post-card-img" src="' + escapeHtml(post.image) + '" alt="' + escapeHtml(post.title) + '" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" /><div class="post-card-img-placeholder" style="display:none;">⛵</div>'
+          : '<div class="post-card-img-placeholder">⛵</div>';
+        return '<a href="/logbook/' + escapeHtml(post.slug) + '" class="post-card">' +
+          imgHtml +
+          '<div class="post-card-body">' +
+            '<div class="post-card-date">' + escapeHtml(post.date) + '</div>' +
+            '<div class="post-card-title">' + escapeHtml(post.title) + '</div>' +
+            '<p class="post-card-excerpt">' + escapeHtml(post.excerpt) + '</p>' +
+            '<span class="post-card-link">' + readPost + '</span>' +
+          '</div></a>';
+      }).join('');
+    }
+
+    function filterPosts(query) {
+      var q = query.toLowerCase().trim();
+      if (!q) { renderPosts(allPosts); return; }
+      var filtered = allPosts.filter(function(p) {
+        return (p.searchText && p.searchText.indexOf(q) !== -1) || 
+               (p.title && p.title.toLowerCase().indexOf(q) !== -1);
+      });
+      renderPosts(filtered);
+    }
+
+    // Run after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        renderPosts(allPosts);
+        var searchInput = document.getElementById('search-input');
+        if (searchInput) {
+          searchInput.addEventListener('input', function() { filterPosts(this.value); });
+        }
+      });
+    } else {
+      renderPosts(allPosts);
+      var searchInput = document.getElementById('search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', function() { filterPosts(this.value); });
+      }
+    }
+
+  } catch(err) {
+    var grid = document.getElementById('posts-grid');
+    if (grid) grid.innerHTML = '<div class="no-results">Error loading posts: ' + err.message + '</div>';
   }
-
-  function filterPosts(query) {
-    var q = query.toLowerCase().trim();
-    if (!q) { renderPosts(allPosts); return; }
-    var filtered = allPosts.filter(function(p) {
-      return p.searchText.indexOf(q) !== -1 || p.title.toLowerCase().indexOf(q) !== -1;
-    });
-    renderPosts(filtered);
-  }
-
-  // Initial render
-  renderPosts(allPosts);
-
-  // Search listener
-  document.getElementById('search-input').addEventListener('input', function() {
-    filterPosts(this.value);
-  });
 })();
 </script>
 </body>
