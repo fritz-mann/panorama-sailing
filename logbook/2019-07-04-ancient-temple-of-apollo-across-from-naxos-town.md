@@ -1,5 +1,5 @@
 ---
-title: Ancient Temple of Apollo across from Naxos town
+title: Ancient Temple of Apollo across from Naxos town in Greece
 date: 2019-07-04T13:44:00.000-04:00
 image: /images/logbook/20190704_ancient-greek-ruins-island-of-naxos.jpg
 published: true
