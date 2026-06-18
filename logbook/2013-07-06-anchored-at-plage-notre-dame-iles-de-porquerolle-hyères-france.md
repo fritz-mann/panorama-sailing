@@ -8,4 +8,4 @@ Les Îles de Porquerolles are just over a mile from the French mainland and its 
 
 We couldn't believe how beautiful this island is especially with the combination of sea and nature. It's a hidden gem for those who love secluded and beautiful beaches.
 
-The sand is very fine sand and the water is as clear as a swimming pool at the shore. So clear in fact , that we were able to find the boat keys which had slipped out of my pocket on the swim to shore.
+The sand is very fine and the water as clear as a swimming pool nearest to the shore. So clear in fact , that we were able to find the boat keys, which had slipped out of my pocket on the swim to shore.
