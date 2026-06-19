@@ -1,5 +1,5 @@
 ---
-title: Summer sailing in Lake Champlain, Vermont USA
+title: Summer sailing on Lake Champlain, Vermont USA
 date: 2010-08-29T12:44:00.000-04:00
 image: /images/logbook/summer-sailing-in-lake-champlain-vermont-usa.jpg
 published: true
