@@ -6,6 +6,6 @@ published: true
 ---
 Naousa is a picturesque, stylish fishing village on Paros' northern coast. Once a quiet port, it has transformed into a luxurious, trendy destination famous for its maze-like whitewashed alleys, waterfront seafood tavernas, vibrant nightlife, and proximity to stunning beaches. Easy to get lost in the labyrinth of Cycladic, white-cobblestone streets filled with boutique shops and hidden churches.
 
-If you are a Navily user, look for this anchorage spot near Monastiri Beach. Ormos Agiou Ioannou it is one of the closest anchorages to Naousa. You can dinghy or take a taxi boat to town and there's even a beautiful beach nearby , not that you really need a beach since the water is great anywhere.
+If you are a Navily user, look for this anchorage spot near Monastiri Beach. [Ormos Agiou Ioannou](https://www.navily.com/mouillage/ormos-agiou-ioannou/20266) it is one of the anchorages across the bay from Naousa. You can dinghy or take a taxi boat to town and there's even a beautiful beach nearby , not that you really need a beach since the water is great anywhere.
 
 GPS 37° 8.70' N, 25° 13.70' E
