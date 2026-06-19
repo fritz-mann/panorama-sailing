@@ -1,10 +1,12 @@
 ---
-title: Catching the last rays of sun
+title: Students are catching the last rays of sun
 date: 2026-06-08T20:36:00.000-04:00
 image: /images/logbook/img_6093.jpeg
 published: true
 ---
-Light winds and clear skies made for perfect learning conditions during tonight's course on wind direction, the points of sail and the process of tacking. Ready about ?
+Light winds and clear skies made for perfect learning conditions during tonight's course on wind direction, the points of sail and the process of tacking. 
+
+Ready about ?
 
 Watching the sunset from a boat is a special experience, as these aspiring student sailors got to experience for themselves this evening.
 
