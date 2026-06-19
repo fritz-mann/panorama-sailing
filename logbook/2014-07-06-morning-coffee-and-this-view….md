@@ -9,3 +9,5 @@ That’s something special about having your morning coffee and being on the wat
 You’re surrounded by water and nature… everything is so peaceful and relaxing. \
 \
 Best part for me is taking a dip and morning swim to get things moving.
+
+Summers on Lake Champlain, Willsboro Bay, NY, USA 🇺🇸
