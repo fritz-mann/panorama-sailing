@@ -1,5 +1,6 @@
 ---
-title: Swim from the boat to Cala Agulla Beach, Mallorca, Spain
+title: Swim from the boat to Cala Agulla Beach, Mallorca, Spain 39° 43.37' N, 3°
+  27.37' E
 date: 2023-06-13T13:43:00.000-04:00
 image: /images/logbook/easy-swim-to-cala-agulla-beach-from-your-boat.jpg
 published: true
