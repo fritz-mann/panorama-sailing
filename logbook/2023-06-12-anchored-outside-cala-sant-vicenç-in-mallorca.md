@@ -8,4 +8,6 @@ Stunning turquoise waters and dramatic cliffs, but extreme caution is required b
 
 Port de Pollença is the nearest major marina, located roughly 16.3 nautical miles away but Cala Sant Vicenç is one of Mallorca's most peaceful and secluded enclaves, the perfect place to enjoy a holiday in total harmony with the Mediterranean. 
 
-One of many hidden gems on the island of Mallorca of the coast of Spain.
+[Look for **Cala Barques/ Clara on Navily**](https://www.navily.com/mouillage/cala-barques-clara/45296)
+
+39° 55.35' N, 3° 3.42' E
