@@ -4,7 +4,7 @@ date: 2023-06-13T13:43:00.000-04:00
 image: /images/logbook/easy-swim-to-cala-agulla-beach-from-your-boat.jpg
 published: true
 ---
-Look for Cala de S'Agulla on Navily 39° 43.37' N, 3° 27.37' E
+Look for [Cala de S'Agulla on Navily](https://www.navily.com/mouillage/cala-de-sagulla/22257) 39° 43.37' N, 3° 27.37' E
 
 Swimming to this beach in Cala Agulla,  was easy and beautiful, but we had to be careful choosing where to drop the anchor in order to avoid shallow rocky outcrops. 
 
