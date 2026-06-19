@@ -1,5 +1,5 @@
 ---
-title: Anchored at Plage Notre Dame,  Îles de Porquerolle,  Hyères France
+title: Anchored at Plage Notre Dame,  Îles de Porquerolles,  Hyères, France
 date: 2013-07-06T11:18:00.000-04:00
 image: /images/logbook/anchored-at-plage-notre-dame-iles-de-porquerolles-france.jpg
 published: true
