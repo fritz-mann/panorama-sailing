@@ -9,3 +9,5 @@ The best part of sailing , especially in Greece or anywhere in the Mediterranean
 Having the freedom to swim anywhere you want for as long as you want and never being in a rush to leave, is a gift.
 
 I can't get enough of diving into this stunning turquoise water while we are anchored in Pori Bay on the eastern side of Ann Koufonisi.
+
+![Chilling after sunset at Kalofeggo restaurant Pori Beach , Pano Koufonisi Greece](/images/logbook/20190703_chiiling-koufonisaricvan.jpg "Chilling after sunset at Kalofeggo restaurant Pori Beach , Pano Koufonisi Greece")
