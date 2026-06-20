@@ -1,5 +1,5 @@
 ---
-title: "Spinnakers showing their beautiful colours "
+title: "Spinnakers showing their colors "
 date: 2025-10-19T13:19:00.000-04:00
 image: /images/logbook/spinakers-showing-their-beautiful-colors.jpg
 published: true
