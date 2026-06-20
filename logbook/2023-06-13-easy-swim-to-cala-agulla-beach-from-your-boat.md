@@ -1,5 +1,5 @@
 ---
-title: Swim from the boat to Cala Agulla Beach, Mallorca, Spain
+title: Swim to Cala Agulla Beach, Mallorca, Spain
 date: 2023-06-13T13:43:00.000-04:00
 image: /images/logbook/easy-swim-to-cala-agulla-beach-from-your-boat.jpg
 published: true
