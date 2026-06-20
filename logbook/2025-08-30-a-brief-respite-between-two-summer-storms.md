@@ -1,5 +1,5 @@
 ---
-title: A brief respite between two summer storms
+title: A brief respite between two storms
 date: 2025-08-30T17:54:00.000-04:00
 image: /images/logbook/prepared-for-the-coming-storms.jpg
 published: true
