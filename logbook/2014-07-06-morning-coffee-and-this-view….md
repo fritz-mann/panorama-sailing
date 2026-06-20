@@ -10,3 +10,5 @@ You’re surrounded by water and nature… everything is so peaceful and relaxin
 Best part, is taking a dip and a morning swim to get things moving.
 
 [Summers on Lake Champlain, Willsboro Bay, NY, USA 🇺🇸](https://maps.app.goo.gl/SzrPCRX4MG2U77bc8?g_st=ic)
+
+![2014 Jeanneau Sun Odyssey 42 DS](/images/logbook/2014-jeanneau-sun-odyssey-42-ds.jpg "2014 Jeanneau Sun Odyssey 42 DS")
