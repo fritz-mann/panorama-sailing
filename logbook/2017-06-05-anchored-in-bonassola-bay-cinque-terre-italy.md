@@ -10,7 +10,7 @@ This small town of **Bonassola**, is located  on the Ligurian coast near Levan
 
 There’s a bike and walking path Levanto - Bonassola - Framura, which runs along an old railway line from the late 1800s. The path runs along the coast through the old railroad tunnels. Some parts of the path are exposed, but much of it is covered. 
 
-![](/images/logbook/img_6145.jpeg)
+![Cycling on the old railway line bike path ](/images/logbook/img_6145.jpeg)
 
 \
 [Spiaggia Di Bonassola in Cinque Terre ](https://maps.app.goo.gl/5pYHEoH4VQaWBjA1A?g_st=ic)
