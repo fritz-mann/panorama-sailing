@@ -8,7 +8,7 @@ View from the top of the town of Bonassola, in Liguria, Italy \
 \
 This small town of **Bonassola**, is located  on the Ligurian coast near Levanto and the Cinque Terre. While many travelers know the five famous towns of the Cinque Terre, Bonassola, just a few miles further north, can be reached by train from Levanto and Cinque Terre in just a few minutes. 
 
-There’s a bike and walking path Levanto - Bonassola - Framura, which runs along an old railway line from the late 1800s. The path runs along the coast through the old railroad tunnels. Some parts of the path are exposed, but much of it is covered. 
+You have to try the bike and walking path between Levanto- Bonassola - Framura, which runs along an old railway line from the late 1800s. It runs along the coast through the old railroad tunnels. Much of it covered but parts of the path are exposed giving incredible views of the ocean and shoreline.
 
 ![Cycling on the old railway line bike path ](/images/logbook/img_6145.jpeg)
 
