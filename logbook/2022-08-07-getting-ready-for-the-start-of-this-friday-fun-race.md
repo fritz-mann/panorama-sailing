@@ -1,5 +1,5 @@
 ---
-title: "Getting ready for the start of this Friday Fun race "
+title: "Getting ready for the Friday Fun race "
 date: 2022-08-05T18:31:00.000-04:00
 image: /images/logbook/getting-sails-ready-for-the-start-of-the-race.jpg
 published: true
