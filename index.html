@@ -59,6 +59,146 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+
+<!-- Structured Data — Person Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Fred",
+  "url": "https://panoramasailing.com",
+  "image": "https://images.panoramasailing.com/about.jpg",
+  "jobTitle": "Certified Sailing Instructor & Professional Skipper",
+  "description": "Certified sailing instructor and professional skipper with over 15 years of sailing experience. Offering sailing lessons, skippered charters, curated sailing experiences, and delivery skipper services.",
+  "email": "info@panoramasailing.com",
+  "telephone": "+14159916906",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "sameAs": [
+    "https://www.instagram.com/sailingpanorama/",
+    "https://www.youtube.com/@panoramasailing"
+  ],
+  "knowsAbout": [
+    "Sailing",
+    "Sailing Instruction",
+    "Skippered Charters",
+    "Ocean Navigation",
+    "Coastal Sailing",
+    "ASA Certification",
+    "Sail Canada Certification"
+  ]
+}
+</script>
+
+<!-- Structured Data — LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Panorama Sailing",
+  "url": "https://panoramasailing.com",
+  "logo": "https://images.panoramasailing.com/about.jpg",
+  "image": "https://images.panoramasailing.com/about.jpg",
+  "description": "Certified sailing instructor and professional skipper offering sailing lessons, skippered charters, curated sailing experiences, delivery skipper services, day sails, sunset cruises, and private coaching. Based at Royal St. Lawrence Yacht Club, Montréal, Canada.",
+  "email": "info@panoramasailing.com",
+  "telephone": "+14159916906",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Royal St. Lawrence Yacht Club",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "45.4215",
+    "longitude": "-73.5826"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "priceRange": "$$",
+  "currenciesAccepted": "CAD, USD, EUR",
+  "paymentAccepted": "Cash, Credit Card",
+  "areaServed": [
+    "Montréal, Canada",
+    "Greece",
+    "Italy",
+    "France",
+    "Spain",
+    "Croatia",
+    "Malta",
+    "Caribbean"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Sailing Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sailing Instruction",
+          "description": "Structured sailing lessons for all levels from beginner to advanced."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Skippered Charter",
+          "description": "Premium sailing experiences with a professional skipper handling everything."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Delivery Skipper",
+          "description": "Professional vessel delivery services locally and on extended coastal passages."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Day Sails",
+          "description": "Half-day or full-day coastal sailing experiences tailored to your wishes."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sunset & Evening Cruises",
+          "description": "Special occasion sailing experiences — birthdays, anniversaries, and celebrations at sea."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Private Coaching",
+          "description": "One-on-one sailing coaching sessions focused on your specific goals."
+        }
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.instagram.com/sailingpanorama/",
+    "https://www.youtube.com/@panoramasailing"
+  ]
+}
+</script>
 <style>
   :root {
     --navy: #0a1628;
