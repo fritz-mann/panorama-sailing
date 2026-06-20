@@ -12,5 +12,7 @@ You must try the bike and walking path between Levanto- Bonassola - Framura, wh
 
 ![Cycling on the old railway line bike path ](/images/logbook/img_6145.jpeg)
 
+![Bonassola Old railway bike path view of the coastline](/images/logbook/bonassola-old-railway-bike-path-exposed.jpg "Bonassola Old railway bike path view of the coastline")
+
 \
 [Spiaggia Di Bonassola in Cinque Terre ](https://maps.app.goo.gl/5pYHEoH4VQaWBjA1A?g_st=ic)
