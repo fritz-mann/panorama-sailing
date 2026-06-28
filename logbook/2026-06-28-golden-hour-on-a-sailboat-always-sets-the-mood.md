@@ -4,7 +4,7 @@ date: 2026-06-27T20:02:00.000-04:00
 image: /images/logbook/sunset-on-golden-hour-cruise-sailboat-young-couple.jpg
 published: true
 ---
-Saturday evening, I took a young couple out on a golden hour cruise to watch the sunset on this beautiful hot summer day. They wanted to be decompress after a long week of work and wanted to be on the water.
+Saturday evening, I took a young couple out on a golden hour cruise to watch the sunset on this beautiful hot summer day. They needed to decompress after a long week of hard work and just wanted to be on the water.
 
 We had recently been to a local backgammon social club in Montreal,  so I proposed that we play a mini backgammon tournament while having cocktails at anchor.
 
