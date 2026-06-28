@@ -13,3 +13,5 @@ Great music and a beautiful sunset always delivers an amazing experience anywher
 ![Double sixes playing backgammon on sailboat at sunset cruise](/images/logbook/double-sixes-playing-backgammon-on-sailboat-at-sunset-cruise.jpg "Double sixes playing backgammon on sailboat at sunset cruise")
 
 ![Playing Backgammon on sailboat during sunset cruise golden hour ](/images/logbook/guests-playing-backgammon-on-sailboat-during-sunset-cruise-golden-hour-.jpg "Playing Backgammon on sailboat during sunset cruise golden hour ")
+
+![Golden hour sunset sailboat cruise is a mood not a moment](/images/logbook/golden-hour-sunset-sailboat-cruise-its-a-mood-not-a-moment.jpg "Golden hour sunset sailboat cruise is a mood not a moment")
