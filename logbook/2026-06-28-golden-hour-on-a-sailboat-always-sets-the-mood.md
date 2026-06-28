@@ -1,7 +1,7 @@
 ---
 title: Golden hour on a sailboat always sets the mood
 date: 2026-06-27T20:02:00.000-04:00
-image: /images/logbook/young-couple-heading-out-on-sailboat-for-golden-hour-sunset-cruise-2806206.jpg
+image: /images/logbook/sunset-on-golden-hour-cruise-sailboat-young-couple.jpg
 published: true
 ---
 Saturday evening, I took out a young couple for a golden hour cruise to watch the sun set on this beautiful hot summer day. They has worked hard all week and wanted to decompress on the water.
