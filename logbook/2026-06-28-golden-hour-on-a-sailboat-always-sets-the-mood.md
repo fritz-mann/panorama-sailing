@@ -4,7 +4,7 @@ date: 2026-06-27T20:02:00.000-04:00
 image: /images/logbook/sunset-on-golden-hour-cruise-sailboat-young-couple.jpg
 published: true
 ---
-![Double sixes playing backgammon on sailboat at sunset cruise](/images/logbook/double-sixes-playing-backgammon-on-sailboat-at-sunset-cruise.jpg "Double sixes playing backgammon on sailboat at sunset cruise")
+![Double six playing backgammon on sailboat at sunset cruise](/images/logbook/double-sixes-playing-backgammon-on-sailboat-at-sunset-cruise.jpg "Double six playing backgammon on sailboat at sunset cruise")
 
 Saturday evening, I took a young couple out on a golden hour cruise to watch the sunset on this beautiful hot summer day. They needed to decompress after a long week of hard work and just wanted to be on the water.
 
