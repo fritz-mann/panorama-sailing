@@ -1,5 +1,5 @@
 ---
-title: Golden hour on a sailboat always sets the mood
+title: Golden hour on a sailboat sets the mood
 date: 2026-06-27T20:02:00.000-04:00
 image: /images/logbook/sunset-on-golden-hour-cruise-sailboat-young-couple.jpg
 published: true
@@ -13,3 +13,5 @@ We had recently been to a local backgammon social club in Montreal,  so I propos
 Great music and a beautiful sunset always delivers an amazing experience anywhere, but nothing beats this combo on a sailboat.
 
 ![Young couple heading out on sailboat for golden hour sunset cruise ](/images/logbook/young-couple-heading-out-on-sailboat-for-golden-hour-sunset-cruise-2806206.jpg "Young couple heading out on sailboat for golden hour sunset cruise ")
+
+![Chasing the light after sunset on a sailboat](/images/logbook/golden-hour-sunset-sailboat-cruise-its-a-mood-not-a-moment.jpg "Chasing the light after sunset on a sailboat")
