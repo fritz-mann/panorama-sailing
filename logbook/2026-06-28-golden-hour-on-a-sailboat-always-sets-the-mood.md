@@ -6,11 +6,11 @@ published: true
 ---
 ![Double six playing backgammon on sailboat at sunset cruise](/images/logbook/double-sixes-playing-backgammon-on-sailboat-at-sunset-cruise.jpg "Double six playing backgammon on sailboat at sunset cruise")
 
-Saturday evening, I took a young couple out on a golden hour cruise to watch the sunset on this beautiful hot summer day. They needed to decompress after a long week of hard work and just wanted to be on the water.
+Saturday evening, I took a young couple out on a golden hour cruise to watch the sunset on this hot summer day. They needed to decompress after a long week of hard work and just wanted to be on the water.
 
-We had recently been to a local backgammon social club in Montreal,  so I proposed that we play a mini backgammon tournament while having cocktails at anchor.
+We'd recently been to a local backgammon social club in Montréal,  so I proposed that we play a mini tournament while having cocktails at anchor.
 
-Great music and a beautiful sunset always delivers an amazing experience anywhere, but nothing beats this combo on a sailboat.
+Great music and a beautiful sunset is always an amazing experience, but nothing beats this combo on a sailboat.
 
 ![Young couple heading out on sailboat for golden hour sunset cruise ](/images/logbook/young-couple-heading-out-on-sailboat-for-golden-hour-sunset-cruise-2806206.jpg "Young couple heading out on sailboat for golden hour sunset cruise ")
 
