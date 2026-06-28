@@ -9,3 +9,5 @@ Saturday evening, I took a young couple out on a golden hour cruise to watch the
 We had recently been to a local backgammon social club in Montreal,  so I proposed that we play a mini backgammon tournament while having cocktails at anchor.
 
 Great music and a beautiful sunset always delivers an amazing experience anywhere, but nothing beats this combo on a sailboat.
+
+![Young couple heading out on sailboat for golden hour sunset cruise ](/images/logbook/young-couple-heading-out-on-sailboat-for-golden-hour-sunset-cruise-2806206.jpg "Young couple heading out on sailboat for golden hour sunset cruise ")
