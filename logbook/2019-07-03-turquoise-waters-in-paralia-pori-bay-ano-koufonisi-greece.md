@@ -6,6 +6,8 @@ published: true
 ---
 The best part of sailing , especially in Greece or anywhere in the Mediterranean, is being able to anchor in hundreds of remote bays, that can only be accessed by boat.
 
+
+
 I can't get enough of diving into this stunning turquoise water while we are anchored in Pori Bay on the eastern side of Ano Koufonisi. Having the freedom to swim anywhere you want, for as long as you want and never being in a rush to leave, is a gift. 
 
 ![Turquoise waters in Paralia Pori Bay, Ano Koufonisi, Greece](/images/logbook/20190703_turquoise-waters-in-paralia-pori-bay-ano-koufonisi-greece.jpg "Turquoise waters in Paralia Pori Bay, Ano Koufonisi, Greece")
