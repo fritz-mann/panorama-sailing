@@ -11,3 +11,5 @@ Although you can get there by car along a rough, unpaved gravel mountain road fr
 It is possible to anchor closer to shore but there too many cruise / tourist boats coming and going so I recommend staying out and just using the dinghy to get to the beach.
 
 Look for [Gramvousa Balos Beach on Navily ](https://www.navily.com/mouillage/gramvousa-balos-beach/52640) 35° 35.33' N, 23° 35.27' E
+
+![Taking the dinghy to Balos Beach in Crete Greece](/images/logbook/balos-lagoon-and-balos-beach-in-crete-greece.jpeg "Taking the dinghy to Balos Beach in Crete Greece")
