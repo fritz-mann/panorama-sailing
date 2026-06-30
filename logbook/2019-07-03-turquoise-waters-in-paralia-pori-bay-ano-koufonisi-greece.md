@@ -4,7 +4,7 @@ date: 2019-07-03T18:33:00.000-04:00
 image: /images/logbook/natural-swimming-pool-in-ano-koufonisi-bay-cyclades-greece.jpg
 published: true
 ---
-The best part of sailing , especially in Greece or anywhere in the Mediterranean, is being able to anchor in hundreds of remote bays, that are impossible to reach any other way than with a boat.
+The best part of sailing , especially in Greece or anywhere in the Mediterranean, is being able to anchor in hundreds of remote bays, that can only be accessed by boat.
 
 I can't get enough of diving into this stunning turquoise water while we are anchored in Pori Bay on the eastern side of Ano Koufonisi. Having the freedom to swim anywhere you want, for as long as you want and never being in a rush to leave, is a gift. 
 
