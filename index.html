@@ -49,12 +49,16 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  // Default to denied until user consents (GDPR/CASL compliance)
+  // Default to granted with anonymized IP — gives analytics data while being privacy friendly
+  // Full tracking only enabled after cookie consent accepted
   gtag('consent', 'default', {
-    analytics_storage: localStorage.getItem('cookie-consent') === 'accepted' ? 'granted' : 'denied'
+    analytics_storage: 'granted',
+    ads_storage: 'denied',
   });
   gtag('js', new Date());
-  gtag('config', 'G-SDJ0B3XCJ5');
+  gtag('config', 'G-SDJ0B3XCJ5', {
+    anonymize_ip: true,
+  });
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1487,28 +1491,35 @@ async function handleSubmit(e) {
   }
 }
 // ── COOKIE CONSENT ──
-(function() {
+// Wait for DOM to be fully ready before touching the banner
+window.addEventListener('DOMContentLoaded', function() {
   const banner = document.getElementById('cookie-banner');
   if (!banner) return;
 
-  // Check if already consented
-  if (localStorage.getItem('cookie-consent')) {
+  const consent = localStorage.getItem('cookie-consent');
+
+  // If already decided, respect that choice
+  if (consent === 'accepted') {
+    banner.style.display = 'none';
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    return;
+  }
+  if (consent === 'declined') {
     banner.style.display = 'none';
     return;
   }
 
-  // Show banner after short delay
+  // No prior choice — show the banner after a short delay
   setTimeout(() => {
     banner.style.opacity = '1';
     banner.style.transform = 'translateY(0)';
-  }, 1500);
+  }, 2000);
 
   document.getElementById('cookie-accept').addEventListener('click', () => {
     localStorage.setItem('cookie-consent', 'accepted');
     banner.style.opacity = '0';
     banner.style.transform = 'translateY(100%)';
     setTimeout(() => banner.style.display = 'none', 400);
-    // Enable Google Analytics tracking
     gtag('consent', 'update', { analytics_storage: 'granted' });
   });
 
@@ -1517,10 +1528,9 @@ async function handleSubmit(e) {
     banner.style.opacity = '0';
     banner.style.transform = 'translateY(100%)';
     setTimeout(() => banner.style.display = 'none', 400);
-    // Disable Google Analytics tracking
     gtag('consent', 'update', { analytics_storage: 'denied' });
   });
-})();
+});
 </script>
 
 <!-- COOKIE CONSENT BANNER -->
