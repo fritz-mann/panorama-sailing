@@ -509,6 +509,84 @@
   .service-link { display:inline-flex; align-items:center; gap:0.4rem; margin-top:1.3rem; font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:gap 0.2s; }
   .service-link:hover { gap:0.8rem; }
 
+  /* ── DESTINATION TICKER ── */
+  .dest-ticker {
+    background: var(--ocean);
+    border-top: 1px solid rgba(45,143,196,0.35);
+    border-bottom: 1px solid rgba(45,143,196,0.35);
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .dest-ticker::before,
+  .dest-ticker::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .dest-ticker::before {
+    left: 0;
+    background: linear-gradient(to right, var(--ocean), transparent);
+  }
+  .dest-ticker::after {
+    right: 0;
+    background: linear-gradient(to left, var(--ocean), transparent);
+  }
+  .dest-ticker-label {
+    position: absolute;
+    left: 1.5rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); z-index: 3; white-space: nowrap;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .dest-ticker-label::after {
+    content: ''; display: block;
+    width: 1px; height: 18px;
+    background: rgba(45,143,196,0.4);
+  }
+  .dest-ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 28s linear infinite;
+    padding: 1rem 0 1rem 160px;
+  }
+  .dest-ticker-track:hover { animation-play-state: paused; }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .dest-ticker-item {
+    display: inline-flex; align-items: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.88rem; font-weight: 600;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--foam);
+    padding: 0 2.5rem;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .dest-ticker-item:hover { color: var(--white); }
+  .dest-ticker-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    margin-left: 2.5rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .dest-ticker-label { display: none; }
+    .dest-ticker-track { animation-duration: 22s; }
+    .dest-ticker-item { font-size: 0.82rem; padding: 0 1.8rem; }
+  }
+
   /* ── EXPERIENCES ── */
   #experiences { background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%); }
   .exp-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; margin-top:3.5rem; }
@@ -878,6 +956,35 @@
     </div>
   </div>
 </section>
+
+<!-- DESTINATION TICKER -->
+<div class="dest-ticker">
+  <div class="dest-ticker-label" data-i18n="dest_ticker_label">Where We Sail</div>
+  <div class="dest-ticker-track" id="destTicker">
+    <!-- Set 1 -->
+    <span class="dest-ticker-item" data-i18n="dest_greece">Greece</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_italy">Italy</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Sardinia</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_malta">Malta</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_croatia">Croatia</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Montenegro</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_france">France</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Corsica</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_spain">Spain</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Cyprus</span><span class="dest-ticker-dot"></span>
+    <!-- Set 2 — exact duplicate for seamless loop -->
+    <span class="dest-ticker-item" data-i18n="dest_greece">Greece</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_italy">Italy</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Sardinia</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_malta">Malta</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_croatia">Croatia</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Montenegro</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_france">France</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Corsica</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item" data-i18n="dest_spain">Spain</span><span class="dest-ticker-dot"></span>
+    <span class="dest-ticker-item">Cyprus</span><span class="dest-ticker-dot"></span>
+  </div>
+</div>
 
 <!-- BLOG -->
 <section id="blog" style="background:var(--deep);">
@@ -1318,6 +1425,7 @@ const i18n = {
     cookie_text: "We use cookies to analyse site traffic and improve your experience. By clicking \"Accept\", you consent to our use of cookies in accordance with our privacy policy.",
     cookie_accept: "Accept",
     cookie_decline: "Decline",
+    dest_ticker_label: "Where We Sail",
     dest_greece: "Greece", dest_italy: "Italy", dest_france: "France", dest_spain: "Spain",
     dest_croatia: "Croatia", dest_malta: "Malta", dest_carib: "Caribbean", dest_usa: "USA"
   },
@@ -1388,6 +1496,7 @@ const i18n = {
     cookie_text: "Nous utilisons des cookies pour analyser le trafic du site et améliorer votre expérience. En cliquant sur « Accepter », vous consentez à notre utilisation des cookies conformément à notre politique de confidentialité.",
     cookie_accept: "Accepter",
     cookie_decline: "Refuser",
+    dest_ticker_label: "Où Nous Naviguons",
     dest_greece: "Grèce", dest_italy: "Italie", dest_france: "France", dest_spain: "Espagne",
     dest_croatia: "Croatie", dest_malta: "Malte", dest_carib: "Caraïbes", dest_usa: "États-Unis"
   }
