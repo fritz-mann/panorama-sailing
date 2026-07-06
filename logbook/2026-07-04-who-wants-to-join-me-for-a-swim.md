@@ -8,7 +8,14 @@ This is what summer is supposed to feel like...sunny days, warm waters and long 
 
 Incredible conditions for sailing, but with so many boaters out on the water, we were worried we might not find any good anchorages by dinner time. Lucky for us, we were able to raft up with  friends that were already anchored in bay and that set us for the perfect evening. 
 
+Rafting up with the other sailboats in Dowkers Bay on 4th of July
 
+![Rafting up with the other sailboats in Dowkers Bay on 4th of July](/images/logbook/saturday-afternoon-raft-up-at-dowker-bay.jpg "Rafting up with the other sailboats in Dowkers Bay on 4th of July")
 
-1. Rafting up with the other sailboats in Dowkers Bay on 4th of July
-2. Dinner and cocktails with the neighbours, waiting for sunset in the bay.
+Mircea is patiently waiting for the sun to set on Dowker's Bay.   
+
+![Mircea is patiently waiting for the sun to set on Dowker's Bay.   ](/images/logbook/rafing-up-and-waiting-fo-the-sunset-on-dowkers-bay.jpg "Mircea is patiently waiting for the sun to set on Dowker's Bay.   ")
+
+Dinner and cocktails with the neighbours, waiting for sunset in the bay
+
+![Dinner and cocktails with the neighbours, waiting for sunset in the bay.](/images/logbook/dinner-with-the-neighbours-at-anchor-on-sail-boat.jpg "Dinner and cocktails with the neighbours, waiting for sunset in the bay.")
