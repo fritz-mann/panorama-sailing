@@ -1,5 +1,5 @@
 ---
-title: Who wants to join me for a swim?
+title: Who wants to join me for a swim on this 4th of July?
 date: 2026-07-04T18:46:00.000-04:00
 image: /images/logbook/who-wants-to-join-me-for-a-swim.jpg
 published: true
