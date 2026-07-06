@@ -18,7 +18,7 @@ Mircea is patiently waiting for the sun to set on Dowker's Bay.
 
 ![Dinner and cocktails with the neighbours, waiting for sunset in the bay.](/images/logbook/dinner-with-the-neighbours-at-anchor-on-sail-boat.jpg "Dinner and cocktails with the neighbours, waiting for sunset in the bay.")
 
-Thanks to Heather and her friend Andrea, we were able to raft up against Bill's boat and enjoy dinner and cocktails, while waiting for the sunset.
+Thanks to Heather and her friend Andrea, we were able to raft up against Bill's boat and enjoy dinner and cocktails with Emily and Staz, while waiting for the sunset.
 
 ![What a perfect spot to spend a night at anchor, just look at that view  and that colourful sky](/images/logbook/perfect-spot-to-spend-the-night.jpg "What a perfect spot to spend a night at anchor, just look at that view  and that colourful sky")
 
