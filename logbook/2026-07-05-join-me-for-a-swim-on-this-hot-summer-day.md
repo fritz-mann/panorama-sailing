@@ -1,6 +1,6 @@
 ---
 title: Who wants to go for a swim ?
-date: 2026-07-05T18:48:00.000-04:00
+date: 2026-07-04T18:48:00.000-04:00
 image: /images/logbook/who-wants-to-join-me-for-a-swim.jpg
 published: true
 ---
