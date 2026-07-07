@@ -4,13 +4,13 @@ date: 2026-07-04T18:46:00.000-04:00
 image: /images/logbook/who-wants-to-join-me-for-a-swim.jpg
 published: true
 ---
-This is what summer is supposed to feel like...sunny days, warm waters and long evenings at anchor. July finally brings the heat we've been missing and exactly what we needed for this 4th of July weekend. It didn't take long for all of us to jump in for a swim.
+This is what summer is supposed to feel like...sunny days, warm waters and long evenings at anchor. July finally brings the heat we've been waiting for and exactly what we needed for this 4th of July weekend. It didn't take long for us to jump in for a swim.
 
-Incredible conditions for sailing, but with so many boaters out on the water, we were worried we might not find any good anchorages by dinner time. Lucky for us, we were able to raft up with friends that were already anchored in the bay, and that set us up for the perfect evening. 
+Incredible conditions for sailing, but with so many boaters out on the water, I was worried we might not find a good anchorage by dinner time. Lucky for us, we were able to raft up with friends that had already anchored in the bay, and that set us up for an amazing evening on the water.
 
 ![Rafting up with the other sailboats in Dowkers Bay on 4th of July](/images/logbook/saturday-afternoon-raft-up-at-dowker-bay.jpg "Rafting up with the other sailboats in Dowkers Bay on 4th of July")
 
-Rafting up with the other sailboats in Dowkers Bay on 4th of July
+Rafting up next to Bill's boat d'AdLib,  in Dowkers Bay on 4th of July. Him and his crew participate in the local club races multiple times a week, but even Bill enjoys taking a break once in a while. 
 
 ![Mircea is patiently waiting for the sun to set on Dowker's Bay.   ](/images/logbook/rafing-up-and-waiting-fo-the-sunset-on-dowkers-bay.jpg "Mircea is patiently waiting for the sun to set on Dowker's Bay.   ")
 
