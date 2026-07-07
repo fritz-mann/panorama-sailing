@@ -14,4 +14,12 @@ Great music and a beautiful sunset is always an amazing experience, but nothing 
 
 ![Young couple heading out on sailboat for golden hour sunset cruise ](/images/logbook/young-couple-heading-out-on-sailboat-for-golden-hour-sunset-cruise-2806206.jpg "Young couple heading out on sailboat for golden hour sunset cruise ")
 
+Young couple chilling on the deck while we head out for a golden hour sunset cruise on the sailboat.
+
+![Playing Backgammon on a sailboat at anchor golden hour sunset tour](/images/logbook/playing-backgammon-on-a-sailboat-at-anchor-golden-hour-sunset-tour.jpg "Playing Backgammon on a sailboat at anchor golden hour sunset tour")
+
+Playing backgammon on the sailboat at anchor with my guests during golden hour sunset tour. 
+
 ![Chasing the light after sunset on a sailboat](/images/logbook/golden-hour-sunset-sailboat-cruise-its-a-mood-not-a-moment.jpg "Chasing the light after sunset on a sailboat")
+
+Another epic sunset sky from the sailboat, anchored right off the sandbar
