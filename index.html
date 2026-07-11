@@ -848,6 +848,7 @@
     <li><a href="#experiences" data-i18n="nav_experiences">Experiences</a></li>
     <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
     <li><a href="#testimonials" data-i18n="nav_reviews">Reviews</a></li>
+    <li id="nav-gps-item" style="display:none;"><a id="nav-gps-link" href="#" target="_blank" rel="noopener" style="color:var(--gold);">GPS</a></li>
   </ul>
   <div style="display:flex; align-items:center; gap:0.8rem;">
     <a href="#contact" class="nav-cta" data-i18n="nav_book">Contact Me</a>
@@ -865,6 +866,7 @@
   <a href="#experiences" onclick="closeMobile()" data-i18n="nav_experiences">Experiences</a>
   <a href="#gallery" onclick="closeMobile()" data-i18n="nav_gallery">Gallery</a>
   <a href="#testimonials" onclick="closeMobile()" data-i18n="nav_reviews">Reviews</a>
+  <a id="mobile-gps-link" href="#" target="_blank" rel="noopener" onclick="closeMobile()" style="display:none; color:var(--gold);">GPS</a>
   <a href="#contact" onclick="closeMobile()" class="mobile-book" data-i18n="nav_book">Contact Me</a>
 </div>
 
@@ -903,6 +905,7 @@
     </div>
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span data-i18n="hero_scroll">Discover</span></div>
+</section>
 </section>
 
 <!-- STATS BAR -->
@@ -1333,6 +1336,37 @@ loadLogbook();
 // ── COPYRIGHT YEAR ──
 document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
+// ── GPS NAV INDICATOR ──
+(function() {
+  fetch('/status.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      if (!data.active) return;
+      const isFr = currentLang === 'fr';
+      const locationText = (isFr && data.location_fr) ? data.location_fr : data.location;
+      const label = 'GPS · ' + locationText;
+      const mapsUrl = data.maps_url || '#';
+
+      // Desktop nav
+      const navItem = document.getElementById('nav-gps-item');
+      const navLink = document.getElementById('nav-gps-link');
+      if (navItem && navLink) {
+        navLink.textContent = label;
+        navLink.href = mapsUrl;
+        navItem.style.display = 'block';
+      }
+
+      // Mobile menu
+      const mobileLink = document.getElementById('mobile-gps-link');
+      if (mobileLink) {
+        mobileLink.textContent = label;
+        mobileLink.href = mapsUrl;
+        mobileLink.style.display = 'block';
+      }
+    })
+    .catch(() => { /* fail silently */ });
+})();
+
 // ── HERO IMAGE FALLBACK ──
 (function() {
   const heroBg = document.querySelector('.hero-bg');
@@ -1356,6 +1390,7 @@ const i18n = {
     hero_title_html: "Set Sail.<br><em>Chart Your</em><br>Adventure.",
     hero_sub: "Expert instruction, curated sailing experiences, and skippered charters — where every journey on the water becomes an unforgettable story.",
     hero_cta1: "Explore Experiences", hero_cta2: "Learn More", hero_scroll: "Discover",
+    status_label: "Currently Sailing In", status_maps: "View on Maps",
     hero_spotify: "Listen on Spotify", hero_apple: "Listen on Apple Music",
     stat1: "Years on the Water", stat2: "Students Trained", stat3: "Hours Sailing Worldwide", stat4: "Safety Record",
     badge_yrs: "Yrs Exp",
@@ -1428,6 +1463,7 @@ const i18n = {
     hero_title_html: "Prenez le vent.<br><em>Tracez Votre</em><br>Aventure.",
     hero_sub: "Instruction experte, expériences de voile sur mesure et charters avec skipper — chaque voyage sur l'eau devient une histoire inoubliable.",
     hero_cta1: "Découvrir les Expériences", hero_cta2: "En Savoir Plus", hero_scroll: "Découvrir",
+    status_label: "Navigation en cours à", status_maps: "Voir sur Maps",
     hero_spotify: "Écouter sur Spotify", hero_apple: "Écouter sur Apple Music",
     stat1: "Ans sur l'Eau", stat2: "Étudiants Formés", stat3: "Heures de Voile dans le Monde", stat4: "Bilan Sécurité",
     badge_yrs: "Ans Exp.",
@@ -1663,6 +1699,10 @@ window.addEventListener('DOMContentLoaded', function() {
     " data-i18n="cookie_accept">Accept</button>
   </div>
 </div>
+
+<!-- SAILING STATUS FLOATING CARD -->
+<div id="sailingStatus">
+  <!-- Expanded panel (Windy embed + footer) — sits above the pill -->
 
 </body>
 </html>
