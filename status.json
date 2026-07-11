@@ -3,6 +3,9 @@
   "location_fr": "Montréal, Canada",
   "since": "2026-07-01",
   "flag": "🇨🇦",
+  "lat": 45.5017,
+  "lng": -73.5673,
+  "zoom": 7,
   "maps_url": "https://www.google.com/maps/search/?api=1&query=Royal+St+Lawrence+Yacht+Club+Montreal",
   "active": true
 }
