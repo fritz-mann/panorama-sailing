@@ -439,100 +439,6 @@
     transform: translateY(-1px);
   }
 
-  /* ── SAILING STATUS FLOATING CARD ── */
-  #sailingStatus {
-    position: fixed;
-    bottom: 1.5rem; left: 1.5rem;
-    z-index: 150;
-    display: none;
-    opacity: 0;
-    transition: opacity 0.6s ease;
-  }
-  .status-pill {
-    display: flex; align-items: center; gap: 0.6rem;
-    background: rgba(6,16,32,0.92);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(45,143,196,0.25);
-    padding: 0.65rem 1rem;
-    cursor: pointer;
-    transition: border-color 0.3s;
-    user-select: none;
-  }
-  .status-pill:hover { border-color: rgba(14,158,158,0.5); }
-  .status-pulse {
-    width: 7px; height: 7px; border-radius: 50%;
-    background: var(--gold); flex-shrink: 0;
-    animation: statusPulse 2s ease-in-out infinite;
-  }
-  @keyframes statusPulse {
-    0%,100% { opacity:1; box-shadow: 0 0 0 0 rgba(14,158,158,0.5); }
-    50% { opacity:0.6; box-shadow: 0 0 0 5px rgba(14,158,158,0); }
-  }
-  .status-pill-text {
-    display: flex; flex-direction: column; gap: 0.1rem;
-  }
-  .status-pill-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--gold); line-height: 1;
-  }
-  .status-pill-location {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em;
-    color: var(--white); line-height: 1;
-  }
-  .status-toggle-icon {
-    font-size: 0.6rem; color: var(--muted); margin-left: 0.3rem;
-    transition: transform 0.3s;
-    flex-shrink: 0;
-  }
-  #sailingStatus.expanded .status-toggle-icon { transform: rotate(180deg); }
-
-  /* Expanded panel */
-  .status-panel {
-    background: rgba(6,16,32,0.95);
-    backdrop-filter: blur(14px);
-    border: 1px solid rgba(45,143,196,0.25);
-    border-bottom: none;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    opacity: 0;
-  }
-  #sailingStatus.expanded .status-panel {
-    max-height: 340px;
-    opacity: 1;
-  }
-  .status-windy {
-    width: 280px; height: 200px;
-    border: none; display: block;
-  }
-  .status-footer {
-    padding: 0.7rem 1rem;
-    border-top: 1px solid rgba(45,143,196,0.15);
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 0.5rem;
-  }
-  .status-since {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.68rem; letter-spacing: 0.1em;
-    color: var(--muted);
-  }
-  .status-maps-link {
-    display: inline-flex; align-items: center; gap: 0.3rem;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--sky); text-decoration: none;
-    transition: color 0.2s; white-space: nowrap;
-  }
-  .status-maps-link:hover { color: var(--gold); }
-
-  @media (max-width: 768px) {
-    #sailingStatus { bottom: 1rem; left: 1rem; }
-    .status-windy { width: 260px; height: 180px; }
-    #sailingStatus.expanded .status-panel { max-height: 310px; }
-  }
-
   /* ── STATS BAR ── */
   .stats-bar {
     background: var(--ocean); border-top: 1px solid rgba(45,143,196,0.3);
@@ -998,7 +904,6 @@
   </div>
   <div class="hero-scroll"><div class="scroll-line"></div><span data-i18n="hero_scroll">Discover</span></div>
 </section>
-</section>
 
 <!-- STATS BAR -->
 <div class="stats-bar">
@@ -1428,74 +1333,6 @@ loadLogbook();
 // ── COPYRIGHT YEAR ──
 document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-// ── SAILING STATUS FLOATING CARD ──
-let statusWindyLoaded = false;
-
-function toggleStatus() {
-  const card = document.getElementById('sailingStatus');
-  const windy = document.getElementById('windyEmbed');
-  const isExpanded = card.classList.contains('expanded');
-
-  if (isExpanded) {
-    card.classList.remove('expanded');
-  } else {
-    card.classList.add('expanded');
-    // Lazy-load Windy iframe only on first expand
-    if (!statusWindyLoaded && windy.getAttribute('data-src')) {
-      windy.src = windy.getAttribute('data-src');
-      statusWindyLoaded = true;
-    }
-  }
-}
-
-(function() {
-  fetch('/status.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
-      if (!data.active) return;
-
-      const card    = document.getElementById('sailingStatus');
-      const loc     = document.getElementById('statusLocation');
-      const since   = document.getElementById('statusSince');
-      const mapsLink = document.getElementById('statusMapsLink');
-      const windy   = document.getElementById('windyEmbed');
-      if (!card || !loc) return;
-
-      // Location text — French or English
-      const isFr = currentLang === 'fr';
-      const locationText = (isFr && data.location_fr) ? data.location_fr : data.location;
-      loc.textContent = (data.flag ? data.flag + '  ' : '') + locationText;
-
-      // Since date
-      if (data.since) {
-        const d = new Date(data.since);
-        const dateStr = d.toLocaleDateString(isFr ? 'fr-CA' : 'en-CA', {
-          month: 'long', day: 'numeric', year: 'numeric'
-        });
-        since.textContent = (isFr ? 'Depuis le ' : 'Since ') + dateStr;
-      }
-
-      // Google Maps link
-      if (data.maps_url && mapsLink) {
-        mapsLink.href = data.maps_url;
-      }
-
-      // Windy embed — build URL from lat/lng if provided, else use location name
-      if (windy) {
-        const lat  = data.lat  || 45.5;
-        const lng  = data.lng  || 14.0;
-        const zoom = data.zoom || 6;
-        const windyUrl = `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lng}&detailLat=${lat}&detailLon=${lng}&width=280&height=200&zoom=${zoom}&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=kt&metricTemp=%C2%B0C&radarRange=-1`;
-        windy.setAttribute('data-src', windyUrl);
-      }
-
-      // Show the card with a gentle fade in
-      card.style.display = 'block';
-      setTimeout(() => { card.style.opacity = '1'; }, 100);
-    })
-    .catch(() => { /* fail silently */ });
-})();
-
 // ── HERO IMAGE FALLBACK ──
 (function() {
   const heroBg = document.querySelector('.hero-bg');
@@ -1519,7 +1356,6 @@ const i18n = {
     hero_title_html: "Set Sail.<br><em>Chart Your</em><br>Adventure.",
     hero_sub: "Expert instruction, curated sailing experiences, and skippered charters — where every journey on the water becomes an unforgettable story.",
     hero_cta1: "Explore Experiences", hero_cta2: "Learn More", hero_scroll: "Discover",
-    status_label: "Currently Sailing In", status_maps: "View on Maps",
     hero_spotify: "Listen on Spotify", hero_apple: "Listen on Apple Music",
     stat1: "Years on the Water", stat2: "Students Trained", stat3: "Hours Sailing Worldwide", stat4: "Safety Record",
     badge_yrs: "Yrs Exp",
@@ -1592,7 +1428,6 @@ const i18n = {
     hero_title_html: "Prenez le vent.<br><em>Tracez Votre</em><br>Aventure.",
     hero_sub: "Instruction experte, expériences de voile sur mesure et charters avec skipper — chaque voyage sur l'eau devient une histoire inoubliable.",
     hero_cta1: "Découvrir les Expériences", hero_cta2: "En Savoir Plus", hero_scroll: "Découvrir",
-    status_label: "Navigation en cours à", status_maps: "Voir sur Maps",
     hero_spotify: "Écouter sur Spotify", hero_apple: "Écouter sur Apple Music",
     stat1: "Ans sur l'Eau", stat2: "Étudiants Formés", stat3: "Heures de Voile dans le Monde", stat4: "Bilan Sécurité",
     badge_yrs: "Ans Exp.",
@@ -1826,37 +1661,6 @@ window.addEventListener('DOMContentLoaded', function() {
       color:var(--white); padding:0.5rem 1.2rem; cursor:pointer;
       transition:all 0.2s;
     " data-i18n="cookie_accept">Accept</button>
-  </div>
-</div>
-
-<!-- SAILING STATUS FLOATING CARD -->
-<div id="sailingStatus">
-  <!-- Expanded panel (Windy embed + footer) — sits above the pill -->
-  <div class="status-panel">
-    <iframe
-      id="windyEmbed"
-      class="status-windy"
-      src=""
-      frameborder="0"
-      allowtransparency="true"
-      scrolling="no"
-    ></iframe>
-    <div class="status-footer">
-      <span class="status-since" id="statusSince"></span>
-      <a class="status-maps-link" id="statusMapsLink" href="#" target="_blank" rel="noopener">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span data-i18n="status_maps">Google Maps</span>
-      </a>
-    </div>
-  </div>
-  <!-- Pill (always visible) -->
-  <div class="status-pill" id="statusPill" onclick="toggleStatus()">
-    <div class="status-pulse"></div>
-    <div class="status-pill-text">
-      <span class="status-pill-label" data-i18n="status_label">Currently Sailing In</span>
-      <span class="status-pill-location" id="statusLocation">—</span>
-    </div>
-    <span class="status-toggle-icon">▲</span>
   </div>
 </div>
 
