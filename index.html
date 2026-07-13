@@ -713,6 +713,7 @@
   /* ── GPS NAV INDICATOR ── */
   #nav-gps-item a { animation: gpsPulse 2.5s ease-in-out infinite; }
   #mobile-gps-link { animation: gpsPulse 2.5s ease-in-out infinite; }
+  .pulse-link { animation: gpsPulse 2.5s ease-in-out infinite; }
   @keyframes gpsPulse {
     0%, 100% { opacity: 1; color: var(--gold); }
     50% { opacity: 0.4; color: var(--gold-lt); }
@@ -939,7 +940,7 @@
   <div>
     <div class="section-tag reveal" data-i18n="about_tag">About Me</div>
     <h2 class="section-title reveal" data-i18n="about_title_html">A Life <em>Defined</em><br>by Freedom</h2>
-    <p class="section-body reveal" data-i18n="about_p1">I gave up a career in tech for something better — sailing and traveling to explore the world. I hope my posts and stories inspire you to discover for yourself, why I'm so passionate about sailing, and the freedom it brings. <a href="/logbook" style="color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;" data-i18n="about_read_stories">Read Stories →</a></p>
+    <p class="section-body reveal" data-i18n="about_p1">I gave up a career in tech for something better — sailing and traveling to explore the world. I hope my posts and stories inspire you to discover for yourself, why I'm so passionate about sailing, and the freedom it brings. <a href="/logbook" class="pulse-link" style="color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;" data-i18n="about_read_stories">Read Stories →</a></p>
     <p class="section-body reveal" style="margin-top:1rem;" data-i18n="about_p2">After 15 years of sailing for pleasure, I became a certified sailing instructor and skipper for hire. Whether I'm taking you out on the water, teaching first-time sailors, or serving as your captain aboard a chartered sailing yacht — my goal is the same: an unforgettable experience that stays with you long after you've left the dock.</p>
     <div class="credentials reveal">
       <span class="cred-tag" data-i18n="cred_asa">ASA Certified Instructor</span>
@@ -1412,7 +1413,7 @@ const i18n = {
     badge_yrs: "Yrs Exp",
     about_tag: "About Me",
     about_title_html: "A Life <em>Defined</em><br>by Freedom",
-    about_p1: "I gave up a career in tech for something better — sailing and traveling to explore the world. I hope my posts and stories inspire you to discover for yourself, why I'm so passionate about sailing, and the freedom it brings. <a href=\"/logbook\" style=\"color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;\">Read Stories →</a>",
+    about_p1: "I gave up a career in tech for something better — sailing and traveling to explore the world. I hope my posts and stories inspire you to discover for yourself, why I'm so passionate about sailing, and the freedom it brings. <a href=\"/logbook\" class=\"pulse-link\" style=\"color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;\">Read Stories →</a>",
     about_read_stories: "Read Stories →",
     about_p2: "After 15 years of sailing for pleasure, I became a certified sailing instructor and skipper for hire. Whether I'm taking you out on the water, teaching first-time sailors, or serving as your captain aboard a chartered sailing yacht — my goal is the same: an unforgettable experience that stays with you long after you've left the dock.",
     cred_asa: "ASA Certified Instructor", cred_sailcanada: "Sail Canada Certified Instructor",
@@ -1485,7 +1486,7 @@ const i18n = {
     badge_yrs: "Ans Exp.",
     about_tag: "À Propos",
     about_title_html: "Une Vie <em>Définie</em><br>par la Liberté",
-    about_p1: "J'ai abandonné une carrière dans la tech pour quelque chose de mieux — naviguer et voyager pour découvrir le monde. J'espère que mes posts et mes histoires vous inspireront à découvrir par vous-même, pourquoi je suis si passionné par la voile, et par la liberté qu'elle procure. <a href=\"/logbook\" style=\"color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;\">Lire les Histoires →</a>",
+    about_p1: "J'ai abandonné une carrière dans la tech pour quelque chose de mieux — naviguer et voyager pour découvrir le monde. J'espère que mes posts et mes histoires vous inspireront à découvrir par vous-même, pourquoi je suis si passionné par la voile, et par la liberté qu'elle procure. <a href=\"/logbook\" class=\"pulse-link\" style=\"color:var(--gold);text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88em;\">Lire les Histoires →</a>",
     about_read_stories: "Lire les Histoires →",
     about_p2: "Après 15 ans de navigation par plaisir, je suis devenu instructeur de voile certifié et skipper professionnel. Que je vous emmène sur l'eau, que j'enseigne à des débutants ou que je sois votre capitaine à bord d'un voilier en charter — mon but reste le même : une expérience inoubliable qui vous accompagne longtemps après avoir quitté le quai.",
     cred_asa: "Instructeur Certifié ASA", cred_sailcanada: "Instructeur Certifié Voile Canada",
