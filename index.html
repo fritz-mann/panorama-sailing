@@ -710,6 +710,20 @@
   .footer-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover { color:var(--gold-lt); }
 
+  /* ── IMAGE PROTECTION ── */
+  img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+  /* Re-enable pointer events on links that contain images */
+  a img { pointer-events: none; }
+
   /* ── GPS NAV INDICATOR ── */
   #nav-gps-item a { animation: gpsPulse 2.5s ease-in-out infinite; }
   #mobile-gps-link { animation: gpsPulse 2.5s ease-in-out infinite; }
@@ -1683,6 +1697,33 @@ window.addEventListener('DOMContentLoaded', function() {
     gtag('consent', 'update', { analytics_storage: 'denied' });
   });
 });
+
+// ── IMAGE PROTECTION ──
+(function() {
+  // Block right-click context menu on images
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Block drag and drop saving of images
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  // Block Ctrl/Cmd + S (Save Page)
+  document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+      e.preventDefault();
+      return false;
+    }
+  });
+})();
 </script>
 
 <!-- COOKIE CONSENT BANNER -->
@@ -1721,8 +1762,7 @@ window.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- SAILING STATUS FLOATING CARD -->
-<div id="sailingStatus">
-  <!-- Expanded panel (Windy embed + footer) — sits above the pill -->
+<div id="sailingStatus" style="display:none;"></div>
 
 </body>
 </html>
