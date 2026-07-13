@@ -710,6 +710,14 @@
   .footer-links a { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color 0.2s; }
   .footer-links a:hover { color:var(--gold-lt); }
 
+  /* ── GPS NAV INDICATOR ── */
+  #nav-gps-item a { animation: gpsPulse 2.5s ease-in-out infinite; }
+  #mobile-gps-link { animation: gpsPulse 2.5s ease-in-out infinite; }
+  @keyframes gpsPulse {
+    0%, 100% { opacity: 1; color: var(--gold); }
+    50% { opacity: 0.4; color: var(--gold-lt); }
+  }
+
   /* ── SPOTIFY BUTTON ── */
   .nav-spotify {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -1337,32 +1345,40 @@ loadLogbook();
 document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
 // ── GPS NAV INDICATOR ──
+let gpsStatusData = null;
+
+function updateGpsLabel() {
+  if (!gpsStatusData) return;
+  const isFr = currentLang === 'fr';
+  const locationText = (isFr && gpsStatusData.location_fr) ? gpsStatusData.location_fr : gpsStatusData.location;
+  const label = 'GPS · ' + locationText;
+
+  const navLink = document.getElementById('nav-gps-link');
+  const mobileLink = document.getElementById('mobile-gps-link');
+  if (navLink) navLink.textContent = label;
+  if (mobileLink) mobileLink.textContent = label;
+}
+
 (function() {
   fetch('/status.json?v=' + Date.now())
     .then(r => r.json())
     .then(data => {
       if (!data.active) return;
-      const isFr = currentLang === 'fr';
-      const locationText = (isFr && data.location_fr) ? data.location_fr : data.location;
-      const label = 'GPS · ' + locationText;
+      gpsStatusData = data;
       const mapsUrl = data.maps_url || '#';
 
-      // Desktop nav
+      // Set map links
       const navItem = document.getElementById('nav-gps-item');
       const navLink = document.getElementById('nav-gps-link');
-      if (navItem && navLink) {
-        navLink.textContent = label;
-        navLink.href = mapsUrl;
-        navItem.style.display = 'block';
-      }
-
-      // Mobile menu
       const mobileLink = document.getElementById('mobile-gps-link');
-      if (mobileLink) {
-        mobileLink.textContent = label;
-        mobileLink.href = mapsUrl;
-        mobileLink.style.display = 'block';
-      }
+
+      if (navLink) navLink.href = mapsUrl;
+      if (mobileLink) mobileLink.href = mapsUrl;
+      if (navItem) navItem.style.display = 'block';
+      if (mobileLink) mobileLink.style.display = 'block';
+
+      // Set initial label based on current language
+      updateGpsLabel();
     })
     .catch(() => { /* fail silently */ });
 })();
@@ -1553,6 +1569,9 @@ function setLang(lang) {
   document.title = lang === 'fr'
     ? 'Panorama Sailing — Instructeur & Skipper'
     : 'Panorama Sailing — Instructor & Skipper';
+
+  // Update GPS nav label if status data is loaded
+  updateGpsLabel();
 }
 
 // ── NAV SCROLL ──
